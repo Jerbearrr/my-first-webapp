@@ -195,7 +195,7 @@ echo removeqsvar($s,$v);
         </div>
 
         <div class="collapse navbar-collapse ml-1   " id="collapsibleNavbar">
-          <div class=" d-flex ml-auto " style="">
+          <div class=" d-flex ml-auto ">
 
 
             <ul class="navbar-nav ">

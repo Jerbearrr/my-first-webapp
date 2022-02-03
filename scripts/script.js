@@ -5,7 +5,7 @@ function fill(Value) {
 }
 
 function checkAll(checkBox) {
-  var checkboxes = document.getElementsByName('requestedBook[]');
+  var checkboxes = document.getElementsByName('requestsId[]');
   for (var i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = checkBox.checked;
   }
