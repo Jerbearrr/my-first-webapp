@@ -601,7 +601,7 @@ $total_pages = $row_db[0];
 	<?php echo "<a class='card  my-3 productcard d-block text-decoration-none ' href ='Openbook.php?id=".$row["id"]."'>"; ?>
 	<div class="row no-gutters d-inline-flex py-md-3 py-2 px-md-3 px-2 w-100" >
 	<div class="col d-flex mx-auto h-100 align-items-center justify-content-center productcardimg" >
-	<?php echo '<img class="cardimg text-dark"  alt="No Image Preview " src="'.$row['image'] .'"/>';  ?>
+	<?php echo '<img class="cardimg text-dark"  alt="No Image Preview " src="./uploads/images/'.$row['image'] .'"/>';  ?>
 
 	</div>
     <div class="card-body p-0 d-flex productcardbody" >
