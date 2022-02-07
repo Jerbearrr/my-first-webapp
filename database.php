@@ -6,7 +6,7 @@ $finalString = implode("&",$AzureConnStringPieces);
 
 parse_str($finalString, $result);
 
-$conn = new mysqli($result['Data Source'], $result['User Id'], $result['Password'], $result['Database']);
+$conn = new mysqli($result['Data Source'], $result['User Id'], $result['Password'], "books");
 
 
 if (!$conn) {
