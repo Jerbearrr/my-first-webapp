@@ -4,7 +4,7 @@
     $password = "6#vWHD_$";
     $db="books";
     $port = 53720;
-    $conn = mysqli_connect($servername, $username, $password,$db, $port);
+    $conn = mysqli_connect(MYSQLCONNSTR_localdb);
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
