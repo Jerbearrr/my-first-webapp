@@ -1,5 +1,5 @@
 <?php
-$connArray = explode(';', $connectionString);
+$connArray = explode(';', $_SERVER['MYSQLCONNSTR_localdb']);
 $connItems = [];
 
 foreach ($connArray as $pair) {
@@ -7,10 +7,7 @@ foreach ($connArray as $pair) {
     $connItems[$key] = $value;
 }
 list ($host, $port) = explode(':', $connItems['Data Source']);
-$dsn = sprintf(
-    'mysql:host=%s;port=%d;dbname=%s',
-    $host, $port, $connItems['Database']
-);
+
 $conn = mysqli_connect($host, $connItems['User Id'], $connItems['Password'], "books", $port);
 
 echo $host;
