@@ -9,8 +9,7 @@ parse_str($finalString, $result);
 foreach ($result as $item) {
     echo $item;
 }
-
-$conn = mysqli_connect($result['Data Source'], $result['User Id'], $result['Password'], $result['Database']);
+$conn = new mysqli($result['Data Source'], $result['User Id'], $result['Password'], $result['Database']);
 
 
 if (!$conn) {
