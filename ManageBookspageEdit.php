@@ -31,6 +31,7 @@ if (isset($_GET['id'])) {
 
 <head>
 	<title>Edit Books</title>
+	<link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
