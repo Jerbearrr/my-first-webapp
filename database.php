@@ -6,9 +6,12 @@ $finalString = implode("&",$AzureConnStringPieces);
 
 parse_str($finalString, $result);
 
-echo $result['Database'];
+foreach ($result as $item) {
+    echo $item;
+}
 
 $conn = mysqli_connect($result['Data Source'], $result['User Id'], $result['Password'], $result['Database']);
+
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
