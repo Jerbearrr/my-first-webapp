@@ -13,6 +13,7 @@ $dsn = sprintf(
 );
 $conn = mysqli_connect($host, $connItems['User Id'], $connItems['Password'], "books", $port);
 
+echo $host, $connItems['User Id'], $connItems['Password'], "books", $port;
 // $servername = "127.0.0.1";
 // $username = "azure";
 // $password = "6#vWHD_$";
