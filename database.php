@@ -6,9 +6,6 @@ $finalString = implode("&",$AzureConnStringPieces);
 
 parse_str($finalString, $result);
 
-foreach ($result as $item) {
-    echo $item;
-}
 $conn = new mysqli($result['Data Source'], $result['User Id'], $result['Password'], $result['Database']);
 
 
