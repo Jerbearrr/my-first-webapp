@@ -98,7 +98,7 @@ echo removeqsvar($s,$v);
 <div class="container" style="max-width:1150px;">
 <div class="d-flex" > 
 
-<div class="d-inline-flex align-items-center " style="">
+<div class="d-inline-flex align-items-center " >
   <button onclick="Opensidenav()" class=" ml-2 mr-1 ml-md-0 d-sm-block d-md-none my-0 align-items-center d-flex " type="button"  style="background-color:white;font-size:25px;border:1px solid #F2FCFF;border-radius:3px;">   
     <span class="fas fa-bars my-1 opensidenav " style="background-color:white;color:black;line-height:1.1!important" ></span>
   </button> 
@@ -148,7 +148,7 @@ echo removeqsvar($s,$v);
         </div>
 
         <div class="collapse navbar-collapse ml-1   " id="collapsibleNavbar">
-          <div class=" d-flex ml-auto " style="">
+          <div class=" d-flex ml-auto ">
 
 
             <ul class="navbar-nav ">
@@ -476,7 +476,7 @@ $total_pages = $row_db[0];
 
 </div>
 </div>
-<div id="target-content" class="productsitemlist   mt-2 mx-0 mx-md-0" style="" >
+<div id="target-content" class="productsitemlist   mt-2 mx-0 mx-md-0">
 <?php while($row = mysqli_fetch_assoc($bookselect)) { 
 ?>
 
