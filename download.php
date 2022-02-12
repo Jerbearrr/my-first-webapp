@@ -2,10 +2,12 @@
 
 include('database.php');
 
-
+date_default_timezone_set('Asia/Shanghai'); 
 
   $userid = $_GET['userid'];
   $file_id = $_GET['file_id'];
+  $download_date = date("Y-m-d H:i:s");
+  $download_due = date('Y-m-d H:i:s', strtotime("+7 days"));
   
 
     $sql = "SELECT * FROM books WHERE id=$file_id";
@@ -13,6 +15,14 @@ include('database.php');
 
     $file = mysqli_fetch_assoc($result);
 	if($file['downloadablefile']!=''){
+		
+	$query = "INSERT INTO download_record (user_id, book_id, download_date, download_due)  VALUES (?, ?, ?, ?);";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "iiss", $userid, $file_id, $download_date, $download_due );
+    mysqli_stmt_execute($stmt);
+		
+		
+		
     $filepath = 'uploads/downloadablefiles/' . $file['downloadablefile'];
 
     if (file_exists($filepath)) {
@@ -27,9 +37,11 @@ include('database.php');
     exit;
     }else{
 echo "File does not exist.";
-	}}else{
-		 header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit();
+	}
+	}else{
+		echo "File does not exist.";
+		
 	}
 
+   
 ?>

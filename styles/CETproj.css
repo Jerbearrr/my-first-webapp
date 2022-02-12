@@ -17,6 +17,30 @@
 
 	
 }
+.sidenav {
+	width:0px;
+	background-image: url(assets/webbg2.png);
+ background-blend-mode: overlay;
+	background-repeat:no-repeat;
+	background-size:cover;
+	border-top:7px solid #741515;
+
+	position:fixed;
+	z-index:500;
+	height:100%;
+	padding-left: 0px;
+	box-shadow:2px 0 5px 0 rgba(0,0,0,0.25);
+	color:#343a40;
+	box-sizing: border-box;
+	overflow-x:hidden;
+
+
+
+
+	
+}
+
+
 #submitBtnId{
 background-color:#343a40!important;
 }
@@ -884,8 +908,137 @@ color:white;
 
 	
 }
+.Sidenavbutton .fas{
+	width:2rem!important;
+	margin-right: 1rem;
+	
+}
 
 @media screen and (max-width: 47.99em) {
+		.sign-in-container {
+	left: 0;
+	width: 100%!important;
+	z-index: 2;
+}
+.sticktodapat{
+  position: -webkit-sticky; /* for Safari */
+  width:100%;
+  position: unset!important;
+  top: 48px;
+  align-self: flex-start;
+  background-color:white;
+  z-index:1;
+  box-shadow: 0 5px 5px rgba(255,255,255,1), 
+			0 5px 5px rgba(255,255,255,1);
+}
+.loginforms form {
+	justify-content:flex-start!important;
+	
+
+}
+.Sidenavbutton .fas{
+	width:1rem!important;
+	margin-right: 1rem;
+	
+}
+.Sidenavbutton:hover {
+	background-color:#a31f1f;
+	color:white;
+}
+
+.sign-up-container{
+	width:100%!important;
+}
+.container.right-panel-active .sign-up-container {
+	transform: translateX(0%);
+	animation:none!important;
+}
+.addbookform form {
+  width: 95%!important;
+}
+
+.borrowbutton {
+  position: relative;
+ display: flex; 
+ justify-content: end;
+  
+   
+}
+.rightblock{
+	
+		
+	width: 100%;
+	
+	
+	
+
+	
+}
+.addbookmodalbdy  .form-group label{
+	margin-bottom:0!important;
+}
+.addbookmodalbdy  .form-group{
+	margin-bottom:0.5rem!important;
+}
+.notitalic{
+  font-style: normal;
+}
+.featuredbox {
+	height:unset;
+	padding-bottom:3px;
+ 
+  background-color: #EEEEEF;
+}
+h5 {
+	font-size: 1rem;
+	
+}		
+h4 {
+	font-size: 1.1rem;
+	
+}	
+h3 {
+	font-size: 1.2rem;
+	
+}
+h2 {
+	font-size: 1.3rem;
+	
+}
+h1 {
+	font-size: 1.5rem;
+}
+p {
+	font-size: 0.8rem;
+}
+.newitems .card-img-top{
+	height: 35vw;
+	
+}
+.newitems .newitemname {
+	color:black;
+	font-family: cambria;
+	font-weight:bold;
+	white-space: nowrap;
+        overflow: hidden;
+        text-overflow: scroll;
+		   text-overflow: ellipsis;
+		   font-size:1rem;
+
+	
+}
+.newitems .itemauthor {
+	color:#686868;
+	font-family: cambria;
+	font-weight:bold;
+	font-size:0.8rem;
+	white-space: nowrap;
+     overflow: hidden;
+     text-overflow: scroll;
+    text-overflow: ellipsis;
+	
+
+}
 	.itemdescription {
 	color:#343a40;
 	overflow: hidden;
@@ -907,11 +1060,13 @@ color:white;
    text-indent:1em;
 }
 .low {
-	margin-bottom:4em;
+	margin-bottom:1em;
 }
 
 }
 @media screen and (min-width: 48em) {
+	
+
 		.itemdescription {
 	color:#343a40;
 	overflow: hidden;
