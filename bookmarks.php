@@ -51,7 +51,7 @@ if($changepass == 'false'){
 
 <body style="background-color:white;background-size:cover;background-attachment:fixed;">
 
-  <div id="myModal" class="modal fade">
+ <div id="myModal" class="modal fade">
     <div class="modal-dialog ">
       <div class="modal-content my-5 modal-loginform" autocomplete="false">
         <form action="./scripts/changePass.php" method="post" autocomplete="false" autocomplete="off">
@@ -84,64 +84,174 @@ echo removeqsvar($s,$v);
               </div>
 
               <input type="password" name="newPass" class="form-control" required="required" autocomplete="off" autocomplete="false">
-            </div>
-						<?php  if($changepass == 'false'){
+            </div>		  
+			<?php  if($changepass == 'false'){
 	echo "<p class='text-danger'>Password does not match</p>";
 }else if ($changepass == true || $changepass == ''){
 	
 }
 ?>
           </div>
+		  
           <div class="modal-footer justify-content-end">
+
             <div>
               <input type="submit" class="btn btn-dark " value="Change Password">
 
             </div>
           </div>
+
         </form>
       </div>
     </div>
   </div>
+  
+<div id="Sidenav" class="sidenav bg-light"  >
 
-  <nav class="navbar-expand-md fixed-top py-1" style="background-color:#A31F1F;box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);box-shadow:   0px 0.1px 5px 0px white; z-index:5;">
-    <div class="container" style="max-width:1150px;">
+<div class="d-flex align-items-center justify-content-center py-1" style=" border-bottom:2px solid #741515;height:9em;width:100%;background-color:#a31f1f;" > 
+<img class="" src="assets/images/puplogo.png" class=""  alt="Logo" style="max-width: 100%;max-height: 100%;align:center;">
+</div>
+
+<div class="mt-2 pb-3 " style=" border-bottom:0.05px solid #444;">
+
+<a href="index.php" style="text-decoration: none !important;color:inherit !important;">
+<div class="Sidenavbutton   hvr-sweep-to-right w-100 " onclick="Closesidenav()"> 
+<h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-home mr-3  "></i> Home</h5>
+</div> 
+</a>
+
+<a href ="AdvanceSearch.php" style="text-decoration: none !important;color:inherit !important;">
+<div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+<h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-search mr-3 "></i> Browse</h5>
+</div>
+</a>
+          <?php
+              if (isset($_SESSION['logintype'])) {
+                if ($_SESSION['logintype'] === 'admin') { ?>
+				
+				<?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./ManageBookspageAdd.php'>"; ?>
+
+		      <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-book mr-3 "></i>Manage Books</h5>
+              </div>
+              </a>
+			  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./ManageTransactionReq.php'>"; ?>
+
+		      <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-file mr-3 "></i>Manage Transactions</h5>
+              </div>
+              </a>
+			  
+			  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href='#' data-toggle='modal' data-target='#myModal' >"; ?>
+			  <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-key mr-3 "></i>Change password</h5>
+              </div>
+			  </a>
+				  
+
+                <?php
+                } else if ($_SESSION['logintype'] === 'student') {
+                ?>
+				
+			  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./bookmarks.php'>"; ?>
+
+		      <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-book mr-3 "></i>Bookmarks</h5>
+              </div>
+              </a>
+			  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./BorrowRecords.php'>"; ?>
+
+		      <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-file mr-3 "></i>Borrow Records</h5>
+              </div>
+              </a>
+				  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href='#' data-toggle='modal' data-target='#myModal' >"; ?>
+			  <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-key mr-3 "></i>Change password</h5>
+              </div>
+			  </a>
+
+              <?php
+                }
+              }
+              ?>
+          <?php
+          if (isset($_SESSION['logintype'])) {
+            if ($_SESSION['logintype'] === 'admin' || $_SESSION['logintype'] === 'student') { ?>
+
+              <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='logout.php'>"; ?>
+              <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-sign-in-alt mr-3 "></i>Logout</h5>
+              </div>
+              </a>
+
+
+            <?php
+            }
+          } else {
+            ?>
+
+            <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='LoginPage.php'>"; ?>
+                   <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
+              <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-sign-in-alt mr-3 "></i>Login</h5>
+              </div>
+            </a>
+
+          <?php
+          }
+          ?>
+
+
+
+
+</div>
+</div>
+
+
+<div id="Sidenavbg" onclick="Closesidenav()" class="sidenavbg disabled " style="display:none;position: fixed; width: 100vw; height: 100vh;background-color:black;z-index:10;opacity:0.3; ">
+</div>
+
+  <nav class="navbar-expand-md sticky-top py-1" style="background-color:#A31F1F;box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);box-shadow:   0px 0.1px 5px 0px white; z-index:5;">
+    <div class="container pl-0 pl-md-1 pl-lg-3 " style="max-width:1150px;">
       <div class="d-flex">
 
         <div class="d-inline-flex align-items-center ">
-          <button onclick="Opensidenav()" class=" ml-2 mr-1 ml-md-0 d-sm-block d-md-none my-0 align-items-center d-flex " type="button" style="background-color:white;font-size:25px;border:1px solid #F2FCFF;border-radius:3px;">
-            <span class="fas fa-bars my-1 opensidenav " style="background-color:white;color:black;line-height:1.1!important"></span>
+          <button onclick="Opensidenav()" class=" ml-2 mr-1 ml-md-0 d-flex d-lg-none my-0 align-items-center  " type="button" style="background-color:white;font-size:25px;border:1px solid #F2FCFF;border-radius:3px;">
+            <span class="fas fa-bars  opensidenav my-1 " style="background-color:white;color:black;line-height:1.1!important"></span>
           </button>
-           <a class="navbar-brand justify-content-center py-0 my-0 px-0 mr-1 d-none d-md-block" href="index.php" style="width:100%;">
+          <a class="navbar-brand justify-content-center py-0 my-0 px-0 mr-1 d-none d-lg-block" href="./index.php" style="width:100%;">
             <img class="d-flex justify-content-center " src="assets/images/puplogo.png" alt="Logo" style="height:38px;">
           </a>
         </div>
 
 
+
         <div class="d-flex ">
-          <div class="collapse navbar-collapse ml-0  " id="collapsibleNavbar">
-            <ul class="navbar-nav ">
+          <div class="collapse navbar-collapse ml-0   " id="collapsibleNavbar">
+            <ul class="navbar-nav d-none d-lg-inline-flex">
               <li class="nav-item ">
                 <a class="nav-link" style="color:white;text-decoration:none;" href="./index.php">Welcome
                   <?php
-                  if (isset($_SESSION['logintype'])) {
 
+
+                  if (isset($_SESSION['logintype'])) {
                     if ($_SESSION['firstname'] && $_SESSION['lastname']) {
                       $firstname = $_SESSION['firstname'];
                       $lastname = $_SESSION['lastname'];
-
-                      echo "$firstname $lastname";
-                    } ?>
-                  <?php
+                    }
+                    echo "$firstname $lastname";
                   } else {
-                    echo ("Visitor");
+                    echo "Visitor";
                   }
-                  ?> </a>
+                  ?>
+
+                </a>
               </li>
             </ul>
-		    <?php
+			<?php
                if (isset($_SESSION['logintype'])) {
 		    ?>
-             <div class="dropdown">
+             <div class="dropdown d-none d-lg-inline-flex">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
               </button>
@@ -156,20 +266,32 @@ echo removeqsvar($s,$v);
             ?>
           </div>
         </div>
+		  <div class="searchbox d-inline-flex d-lg-none d-flex align-items-center" style="border:none;width:60vw;">
+            <form class="input-group ml-2 d-inline-flex" action="search.php" method="GET">
+
+              <i class="fas fa-search mr-2 align-items-center  my-auto"></i>
+              <input type="text" class="form-control my-auto" name="searchtext" placeholder="Search " style="border:0;height:30px;padding-left:2px; outline:none;box-shadow:none;">
+              <div class="input-group-append">
+                <button class="btn " type="submit" style="box-shadow:none;outline:none;">
+                  <i class="fa fa-arrow-right"></i>
+                </button>
+              </div>
+
+            </form>
+          </div>
 
         <div class="collapse navbar-collapse ml-1   " id="collapsibleNavbar">
           <div class=" d-flex ml-auto ">
 
 
-
-            <ul class="navbar-nav ">
+            <ul class="navbar-nav d-none d-lg-inline-flex ">
 
               <?php
               if (isset($_SESSION['logintype'])) {
                 if ($_SESSION['logintype'] === 'admin') { ?>
 
                   <li class="nav-item bg-sm-dark">
-                    <a class="nav-link navlinkbuttons" href="ManageBookspageAdd.php">Manage Books</a>
+                    <a class="nav-link navlinkbuttons" href="./ManageBookspageAdd.php">Manage Books</a>
                   </li>
                   <li class="nav-item bg-sm-dark">
                     <a class="nav-link navlinkbuttons" href="./ManageTransactionReq.php">Manage Transactions</a>
@@ -188,6 +310,7 @@ echo removeqsvar($s,$v);
                 }
               }
               ?>
+
               <span class="navline my-1 "></span>
               <li class="nav-item bg-sm-dark">
                 <a class="nav-link navlinkbuttons" href="CETprojCartpage.html">Other Resources</a>
@@ -202,9 +325,9 @@ echo removeqsvar($s,$v);
 
 
 
-
       </div>
     </div>
+
   </nav>
 
 
@@ -277,7 +400,7 @@ echo removeqsvar($s,$v);
 
 			<div class="rightblock ml-0 ml-lg-3 pb-4 d-flex align-items-center justify-content-center" style="flex-direction:column;">
 
-				<div class="pt-3 sticktodapat">
+				<div class="pt-3 sticktodapat d-none d-lg-block">
 					<div class="searchbox d-flex align-items-center">
 						<form class="input-group ml-2 d-inline-flex" action="search.php" method="GET">
 
@@ -449,7 +572,7 @@ echo removeqsvar($s,$v);
 				?>
 
 
-				<div class="logincontainer browsecontainer d-flex px-3 pb-3 " style="width:99.3%;margin-top:64px;">
+				<div class="logincontainer browsecontainer d-flex px-3 pb-3 mt-1 " style="width:99.3%;">
 					<!-- Nav tabs -->
 					<div class="resultsection mt-2 d-flex align-items-center  w-100">
 						<h5 class="resulttext mr-2"> Bookmarks </h5>
@@ -468,7 +591,7 @@ echo removeqsvar($s,$v);
 							<?php echo "<a class='card  my-3 productcard d-block text-decoration-none '  href ='Openbook.php?id=" . $row["id"] . "'>"; ?>
 							<div class="row no-gutters d-inline-flex py-md-3 py-2 px-md-3 px-2">
 								<div class="col d-flex mx-auto h-100 align-items-center justify-content-center productcardimg">
-									<?php echo '<img class="cardimg text-dark"  alt="No Image Preview " src="./uploads/images/' . $row['image'] . '"/>';  ?>
+									<?php echo '<img class="cardimg text-dark"  alt="No Image Preview " src="' . $row['image'] . '"/>';  ?>
 
 								</div>
 								<div class="card-body p-0 d-flex productcardbody">

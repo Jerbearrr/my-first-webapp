@@ -12,7 +12,7 @@ function checkAll(checkBox) {
 }
 
 $(document).ready(function () {
-	
+
 
 
   $("#search").keyup(function () {
@@ -32,7 +32,7 @@ $(document).ready(function () {
       })
     }
   });
-  
+
   $('.owlhero').owlCarousel({
 
     margin: 5,
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     responsive: {
       0: {
-        items: 1
+        items: 2
       },
       600: {
         items: 2
@@ -68,7 +68,7 @@ $(document).ready(function () {
 
     responsive: {
       0: {
-        items: 2
+        items: 3
       },
       600: {
         items: 3
@@ -79,11 +79,13 @@ $(document).ready(function () {
     }
   });
   $('#myModal').on('hidden.bs.modal', function (e) {
-  $("#modalbtnclose").click();
-});
+    $("#modalbtnclose").click();
+  });
   const signUpButton = document.getElementById('signUp');
   const signInButton = document.getElementById('signIn');
   const container = document.getElementById('container');
+  const signUpButton2 = document.getElementById('signUp2');
+  const signInButton2 = document.getElementById('signIn2');
 
   signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
@@ -92,7 +94,15 @@ $(document).ready(function () {
   signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
   });
-  
+
+  signUpButton2.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+  });
+
+  signInButton2.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+  });
+
 
 
 });
@@ -115,4 +125,24 @@ function readURL(input) {
 
     reader.readAsDataURL(input.files[0]);
   }
+}
+
+
+function Opensidenav() {
+  document.getElementById("Sidenav").style.width = "260px";
+  document.getElementById("Sidenav").style.transition = "0.5s";
+  document.getElementById("Sidenavbg").style.display = "block";
+
+
+
+
+
+
+
+}
+function Closesidenav() {
+  document.getElementById("Sidenav").style.width = "0px";
+  document.getElementById("Sidenav").style.transition = "0.2s";
+  document.getElementById("Sidenavbg").style.display = "none";
+
 }

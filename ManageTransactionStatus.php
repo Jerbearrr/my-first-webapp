@@ -60,7 +60,7 @@ if ($logintype != "admin") {
 <html lang="en">
 
 <head>
-  <title>Request List</title>
+  <title>Manage Transaction - Request Status</title>
   <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -202,56 +202,166 @@ if ($logintype != "admin") {
             }
             ?>
           </div>
+
           <div class="modal-footer justify-content-end">
+
             <div>
               <input type="submit" class="btn btn-dark " value="Change Password">
 
             </div>
           </div>
+
         </form>
       </div>
     </div>
   </div>
 
+  <div id="Sidenav" class="sidenav bg-light">
 
-  <nav class="navbar-expand-md fixed-top py-1" style="background-color:#A31F1F;box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);box-shadow:   0px 0.1px 5px 0px white; z-index:5;">
-    <div class="container" style="max-width:1150px;">
+    <div class="d-flex align-items-center justify-content-center py-1" style=" border-bottom:2px solid #741515;height:9em;width:100%;background-color:#a31f1f;">
+      <img class="" src="assets/images/puplogo.png" class="" alt="Logo" style="max-width: 100%;max-height: 100%;align:center;">
+    </div>
+
+    <div class="mt-2 pb-3 " style=" border-bottom:0.05px solid #444;">
+
+      <a href="index.php" style="text-decoration: none !important;color:inherit !important;">
+        <div class="Sidenavbutton   hvr-sweep-to-right w-100 " onclick="Closesidenav()">
+          <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-home mr-3  "></i> Home</h5>
+        </div>
+      </a>
+
+      <a href="AdvanceSearch.php" style="text-decoration: none !important;color:inherit !important;">
+        <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+          <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-search mr-3 "></i> Browse</h5>
+        </div>
+      </a>
+      <?php
+      if (isset($_SESSION['logintype'])) {
+        if ($_SESSION['logintype'] === 'admin') { ?>
+
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./ManageBookspageAdd.php'>"; ?>
+
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-book mr-3 "></i>Manage Books</h5>
+          </div>
+          </a>
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./ManageTransactionReq.php'>"; ?>
+
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-file mr-3 "></i>Manage Transactions</h5>
+          </div>
+          </a>
+
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href='#' data-toggle='modal' data-target='#myModal' >"; ?>
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-key mr-3 "></i>Change password</h5>
+          </div>
+          </a>
+
+
+        <?php
+        } else if ($_SESSION['logintype'] === 'student') {
+        ?>
+
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./bookmarks.php'>"; ?>
+
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-book mr-3 "></i>Bookmarks</h5>
+          </div>
+          </a>
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./BorrowRecords.php'>"; ?>
+
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-file mr-3 "></i>Borrow Records</h5>
+          </div>
+          </a>
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href='#' data-toggle='modal' data-target='#myModal' >"; ?>
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-key mr-3 "></i>Change password</h5>
+          </div>
+          </a>
+
+      <?php
+        }
+      }
+      ?>
+      <?php
+      if (isset($_SESSION['logintype'])) {
+        if ($_SESSION['logintype'] === 'admin' || $_SESSION['logintype'] === 'student') { ?>
+
+          <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='logout.php'>"; ?>
+          <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+            <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-sign-in-alt mr-3 "></i>Logout</h5>
+          </div>
+          </a>
+
+
+        <?php
+        }
+      } else {
+        ?>
+
+        <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='LoginPage.php'>"; ?>
+        <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
+          <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-sign-in-alt mr-3 "></i>Login</h5>
+        </div>
+        </a>
+
+      <?php
+      }
+      ?>
+
+
+
+
+    </div>
+  </div>
+
+
+  <div id="Sidenavbg" onclick="Closesidenav()" class="sidenavbg disabled " style="display:none;position: fixed; width: 100vw; height: 100vh;background-color:black;z-index:10;opacity:0.3; ">
+  </div>
+
+  <nav class="navbar-expand-md sticky-top py-1" style="background-color:#A31F1F;box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);box-shadow:   0px 0.1px 5px 0px white; z-index:5;">
+    <div class="container pl-0 pl-md-1 pl-lg-3 " style="max-width:1150px;">
       <div class="d-flex">
 
         <div class="d-inline-flex align-items-center ">
-          <button onclick="Opensidenav()" class=" ml-2 mr-1 ml-md-0 d-sm-block d-md-none my-0 align-items-center d-flex " type="button" style="background-color:white;font-size:25px;border:1px solid #F2FCFF;border-radius:3px;">
-            <span class="fas fa-bars my-1 opensidenav " style="background-color:white;color:black;line-height:1.1!important"></span>
+          <button onclick="Opensidenav()" class=" ml-2 mr-1 ml-md-0 d-flex d-lg-none my-0 align-items-center  " type="button" style="background-color:white;font-size:25px;border:1px solid #F2FCFF;border-radius:3px;">
+            <span class="fas fa-bars  opensidenav my-1 " style="background-color:white;color:black;line-height:1.1!important"></span>
           </button>
-          <a class="navbar-brand justify-content-center py-0 my-0 px-0 mr-1 d-none d-md-block" href="index.php" style="width:100%;">
+          <a class="navbar-brand justify-content-center py-0 my-0 px-0 mr-1 d-none d-lg-block" href="./index.php" style="width:100%;">
             <img class="d-flex justify-content-center " src="assets/images/puplogo.png" alt="Logo" style="height:38px;">
           </a>
         </div>
 
+
+
         <div class="d-flex ">
-          <div class="collapse navbar-collapse ml-0  " id="collapsibleNavbar">
-            <ul class="navbar-nav ">
+          <div class="collapse navbar-collapse ml-0   " id="collapsibleNavbar">
+            <ul class="navbar-nav d-none d-lg-inline-flex">
               <li class="nav-item ">
                 <a class="nav-link" style="color:white;text-decoration:none;" href="./index.php">Welcome
                   <?php
-                  if (isset($_SESSION['logintype'])) {
 
+
+                  if (isset($_SESSION['logintype'])) {
                     if ($_SESSION['firstname'] && $_SESSION['lastname']) {
                       $firstname = $_SESSION['firstname'];
                       $lastname = $_SESSION['lastname'];
-
-                      echo "$firstname $lastname";
-                    } ?>
-                  <?php
+                    }
+                    echo "$firstname $lastname";
                   } else {
-                    echo ("Visitor");
+                    echo "Visitor";
                   }
-                  ?> </a>
+                  ?>
+
+                </a>
               </li>
             </ul>
             <?php
             if (isset($_SESSION['logintype'])) {
             ?>
-              <div class="dropdown">
+              <div class="dropdown d-none d-lg-inline-flex">
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                 </button>
@@ -266,54 +376,68 @@ if ($logintype != "admin") {
             ?>
           </div>
         </div>
+        <div class="searchbox d-inline-flex d-lg-none d-flex align-items-center" style="border:none;width:60vw;">
+          <form class="input-group ml-2 d-inline-flex" action="search.php" method="GET">
+
+            <i class="fas fa-search mr-2 align-items-center  my-auto"></i>
+            <input type="text" class="form-control my-auto" name="searchtext" placeholder="Search " style="border:0;height:30px;padding-left:2px; outline:none;box-shadow:none;">
+            <div class="input-group-append">
+              <button class="btn " type="submit" style="box-shadow:none;outline:none;">
+                <i class="fa fa-arrow-right"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
         <div class="collapse navbar-collapse ml-1   " id="collapsibleNavbar">
-          <div class=" d-flex ml-auto " style="">
+          <div class=" d-flex ml-auto ">
 
 
-            <ul class="navbar-nav ">
-              <ul class="navbar-nav ">
+            <ul class="navbar-nav d-none d-lg-inline-flex ">
+
+              <?php
+              if (isset($_SESSION['logintype'])) {
+                if ($_SESSION['logintype'] === 'admin') { ?>
+
+                  <li class="nav-item bg-sm-dark">
+                    <a class="nav-link navlinkbuttons" href="./ManageBookspageAdd.php">Manage Books</a>
+                  </li>
+                  <li class="nav-item bg-sm-dark">
+                    <a class="nav-link navlinkbuttons" href="./ManageTransactionReq.php">Manage Transactions</a>
+                  </li>
 
                 <?php
-                if (isset($_SESSION['logintype'])) {
-                  if ($_SESSION['logintype'] === 'admin') { ?>
-
-                    <li class="nav-item bg-sm-dark">
-                      <a class="nav-link navlinkbuttons" href="./ManageBookspageAdd.php">Manage Books</a>
-                    </li>
-                    <li class="nav-item bg-sm-dark">
-                      <a class="nav-link navlinkbuttons" href="./ManageTransactionReq.php">Manage Transactions</a>
-                    </li>
-
-                  <?php
-                  } else if ($_SESSION['logintype'] === 'student') {
-                  ?>
-                    <li class="nav-item bg-sm-dark">
-                      <a class="nav-link navlinkbuttons" href="bookmarks.php">Bookmarks</a>
-                    </li>
-                    <li class="nav-item bg-sm-dark">
-                      <a class="nav-link navlinkbuttons" href="BorrowRecords.php">Borrow Records</a>
-                    </li>
-                <?php
-                  }
-                }
+                } else if ($_SESSION['logintype'] === 'student') {
                 ?>
-                <span class="navline my-1 "></span>
-                <li class="nav-item bg-sm-dark">
-                  <a class="nav-link navlinkbuttons" href="CETprojCartpage.html">Other Resources</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link navlinkbuttons" href="#" data-toggle="modal" data-target="#myModal">Contact Us</a>
-                </li>
-              </ul>
+                  <li class="nav-item bg-sm-dark">
+                    <a class="nav-link navlinkbuttons" href="bookmarks.php">Bookmarks</a>
+                  </li>
+                  <li class="nav-item bg-sm-dark">
+                    <a class="nav-link navlinkbuttons" href="BorrowRecords.php">Borrow Records</a>
+                  </li>
+              <?php
+                }
+              }
+              ?>
+
+              <span class="navline my-1 "></span>
+              <li class="nav-item bg-sm-dark">
+                <a class="nav-link navlinkbuttons" href="CETprojCartpage.html">Other Resources</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link navlinkbuttons" href="#" data-toggle="modal" data-target="#myModal">Contact Us</a>
+              </li>
+            </ul>
 
           </div>
         </div>
 
 
 
-
       </div>
     </div>
+
   </nav>
 
 
@@ -374,18 +498,19 @@ if ($logintype != "admin") {
 
       <div class="rightblock ml-0 ml-lg-3 pb-4 d-flex align-items-center justify-content-center" style="flex-direction:column;">
 
-        <div class="pt-3 sticktodapat d-none d-lg-block" style="box-shadow:none;border-bottom:2px solid #b3b5b7;">
+        <div class="pt-3 sticktodapat d-block d-lg-block" style="box-shadow:none;border-bottom:2px solid #b3b5b7;">
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item advtabs">
-              <a href="ManageTransactionReq.php" class="nav-link  pt-3">
-                <div class="d-flex align-items-center justify-content-center "><i class="fas fa-shopping-cart"></i>
+              <a href="ManageTransactionReq.php" class="nav-link  pt-1 pt-lg-3">
+                <div class="d-flex align-items-center justify-content-center "><i class="fas d-none d-lg-block fa-shopping-cart"></i>
                 </div>
                 <div class="">Book Requests</div>
               </a>
             </li>
             <li class="nav-item advtabs">
-              <a href="ManageTransactionStatus.php" class="nav-link  active pt-3">
-                <div class="d-flex align-items-center justify-content-center"><i class="fas fa-file"></i></div>Request Status
+              <a href="ManageTransactionStatus.php" class="nav-link active pt-1 pt-lg-3">
+                <div class="d-flex align-items-center justify-content-center"><i class="fas d-none d-lg-block  fa-file"></i></div>Request
+                Status
               </a>
             </li>
 
@@ -393,7 +518,7 @@ if ($logintype != "admin") {
         </div>
 
 
-        <div class="logincontainer browsecontainer  mt-5 d-flex  pb-3 " style="width:99.2%;">
+        <div class="logincontainer browsecontainer  d-flex  pb-3 " style="width:99.2%;">
           <!-- Nav tabs -->
 
 
@@ -418,7 +543,7 @@ if ($logintype != "admin") {
                 </div>
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input type="checkbox" id="ch4" onclick="checkAll(this)" onchange="onChange(this)" name="check" value="borrowed" class="form-check-input"> Borrowed
+                    <input type="checkbox" id="ch4" onclick="checkAll(this)" onchange="onChange(this)" name="check" value="received" class="form-check-input"> Received
                   </label>
                 </div>
                 <div class="form-check-inline">
@@ -489,7 +614,7 @@ if ($logintype != "admin") {
 
                     <?php
                     if ($totalPages > 1) {
-                      echo '<a class="page mx-1 px-3 py-1 " href="?pagenum=1&value=' . $sorter . '">First</a>';
+                      echo '<a class="page mx-1 px-2 px-md-3 py-auto py-md-1  " href="?pagenum=1&value=' . $sorter . '">First</a>';
                     }
 
                     if ($totalPages != 1) {
@@ -500,15 +625,15 @@ if ($logintype != "admin") {
                         // Render clickable number links that should appear on the left of the target page number
                         for ($i = $pageNum - 2; $i < $pageNum; $i++) {
                           if ($i > 0) {
-                            echo '<a class="page mx-1 px-3 py-1 " href="' . $_SERVER['PHP_SELF'] . '?pagenum=' . $i . '&value=' . $sorter . '">' . $i . '</a>';
+                            echo '<a class="page mx-1 px-2 px-md-3 py-auto py-md-1  " href="' . $_SERVER['PHP_SELF'] . '?pagenum=' . $i . '&value=' . $sorter . '">' . $i . '</a>';
                           }
                         }
                       }
                       // Render the target page number, but without it being a link
-                      echo '<a class="page mx-1 px-3 py-1 " style = "background-color: #A31F1F">' . $pageNum . '</a>';
+                      echo '<a class="page mx-1 px-2 px-md-3 py-auto py-md-1  " style = "background-color: #A31F1F">' . $pageNum . '</a>';
                       // Render clickable number links that should appear on the right of the target page number
                       for ($i = $pageNum + 1; $i <= $totalPages; $i++) {
-                        echo '<a class="page mx-1 px-3 py-1 disabled" href="' . $_SERVER['PHP_SELF'] . '?pagenum=' . $i . '&value=' . $sorter . '">' . $i . '</a>';
+                        echo '<a class="page mx-1 px-2 px-md-3 py-auto py-md-1  disabled" href="' . $_SERVER['PHP_SELF'] . '?pagenum=' . $i . '&value=' . $sorter . '">' . $i . '</a>';
                         if ($i >= $pageNum + 2) {
                           break;
                         }
@@ -516,7 +641,7 @@ if ($logintype != "admin") {
                     }
 
                     ?>
-                    <a class="page mx-1 px-3 py-1 " href="?pagenum=<?php echo $totalPages . "&value=$sorter" ?>">Last</a>
+                    <a class="page mx-1 px-2 px-md-3 py-0 py-md-1 " href="?pagenum=<?php echo $totalPages . "&value=$sorter" ?>">Last</a>
                   <?php } else {
                     echo ('no data found');
                   } ?>
