@@ -543,7 +543,7 @@ if ($logintype != "admin") {
                 </div>
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input type="checkbox" id="ch4" onclick="checkAll(this)" onchange="onChange(this)" name="check" value="received" class="form-check-input"> Received
+                    <input type="checkbox" id="ch4" onclick="checkAll(this)" onchange="onChange(this)" name="check" value="borrowed" class="form-check-input"> Borrowed
                   </label>
                 </div>
                 <div class="form-check-inline">
@@ -586,7 +586,7 @@ if ($logintype != "admin") {
 
                   if ($request['status'] == "borrowed") {
                     $today = new DateTime("Now");
-                    $deadline = new DateTime($request['date_of_process'] . '+ 7 days');
+                    $deadline = new DateTime($request['date_of_return']);
                     $duration = date_diff($deadline, $today);
 
                     echo ' <button name="book_returned" value=' . $request['id'] .  ' class="mx-2 receivedbtn"   >Book is returned</button> </p>';
