@@ -1,7 +1,7 @@
 <?php
 // $servername = "127.0.0.1";
-// $username = "azure";
-// $password = "6#vWHD_$";
+// $username = "root";
+// $password = "Jerbear#1799";
 // $db = "books";
 // $conn = mysqli_connect($servername, $username, $password, $db);
 $connArray = explode(';', $_SERVER['MYSQLCONNSTR_localdb']);
