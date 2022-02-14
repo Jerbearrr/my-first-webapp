@@ -9,8 +9,7 @@ include('database.php');
 <html lang="en">
 <head>
   <title>Search Results</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
-  <meta charset="utf-8">
+ <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -561,14 +560,14 @@ $total_pages = $row_db[0];
 <div class="logincontainer browsecontainer d-flex px-3 pb-3 " style="width:99.3%;">
 <!-- Nav tabs -->
 <div class=" categoriescontentstop w-100  mx-0 d-inline-flex mt-3" style="max-width:100%;">
-<div class="resultsection mt-2 d-flex align-items-center  w-100">
+<div class="resultsection mt-2 d-inline-flex flex-wrap align-items-center  w-100">
 <h5 class="resulttext" > Search Result: </h5>
-<h5 class="resultfor mx-2 px-2 py-1" >
+<h5 class="resultfor d-inline-flex mx-2 px-2 py-1" >
 <?php echo $subsubject ?>
 </h5>
 <p style="color:#666;position:relative;top:10px;" >page: <?php echo $page ?> of <?php echo $lastpage ?> </p>
 </div>
-<div class="d-inline-flex  align-items-center mr-md-0 mr-1" style="border-bottom: 2px solid black;">
+<div class="d-inline-flex  align-items-center mr-md-0 mr-1 mt-auto pb-1" style="border-bottom: 2px solid black;">
 
         <select id="myselect" class="selectpicker myselect show-tick py-1 "  onchange="location= this.value;"   >
 		

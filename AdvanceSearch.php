@@ -59,21 +59,25 @@ session_start();
         <form action="./scripts/changePass.php" method="post" autocomplete="false" autocomplete="off">
           <div class="modal-header modalhome align-items-center">
             <h4 class="modal-title">Change Password</h4>
-            <button type="button" id="modalbtnclose" class="close" data-dismiss="modal" aria-hidden="true" style="color: #F8ECFF;opacity:1;outline:none;" onclick="window.location.href='<?php
-                                                                                                                                                                                          $s = $_SERVER['REQUEST_URI'];
-                                                                                                                                                                                          $v = 'changepass';
+            <button type="button" id="modalbtnclose" class="close" data-dismiss="modal" aria-hidden="true" style="color: #F8ECFF;opacity:1;outline:none;" onclick=window.location.href='
+<?php
+$s = $_SERVER['REQUEST_URI'] ;
+$v = 'changepass';
+   
+function removeqsvar($url, $varname) {
+																																														   
+	$url = preg_replace('/(&|\?)'.preg_quote($varname).'=[^&]*$/', '', $url);
+    $url = preg_replace('/(&|\?)'.preg_quote($varname).'=[^&]*&/', '$1', $url);
+    return $url;
+}
 
-                                                                                                                                                                                          function removeqsvar($url, $varname)
-                                                                                                                                                                                          {
-                                                                                                                                                                                            $url = preg_replace('/(&|\?)' . preg_quote($varname) . '=[^&]*$/', '', $url);
-                                                                                                                                                                                            $url = preg_replace('/(&|\?)' . preg_quote($varname) . '=[^&]*&/', '$1', $url);
-                                                                                                                                                                                            return $url;
-                                                                                                                                                                                          }
+																																																				   
+																																															   
 
-                                                                                                                                                                                          echo removeqsvar($s, $v);
-                                                                                                                                                                                          ?>'">
-
-              &times;</button>
+echo removeqsvar($s,$v);
+?>'>                                                                                                                                                                                        	  
+        
+		&times;</button>
           </div>
           <div class="modal-body">
             <div class="form-group">
@@ -143,18 +147,14 @@ session_start();
             <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-file mr-3 "></i>Manage Transactions</h5>
           </div>
           </a>
-
           <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href='#' data-toggle='modal' data-target='#myModal' >"; ?>
           <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
             <h5 class=" px-4 my-3 d-inline-flex align-items-center "><i class="fas fa-key mr-3 "></i>Change password</h5>
           </div>
           </a>
-
-
         <?php
         } else if ($_SESSION['logintype'] === 'student') {
         ?>
-
           <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./bookmarks.php'>"; ?>
 
           <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()">
@@ -555,7 +555,7 @@ session_start();
                   <h4 class="modal-title">Advanced Search</h4>
 
                 </div>
-                <div class="modal-body  ">
+                <div class="modal-body addbookmodalbdy  ">
                   <div class="form-group">
                     <label>Title:</label>
                     <input type="text" name="title" class="form-control" autocomplete="off" autocomplete="false">
