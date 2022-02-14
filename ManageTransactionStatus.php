@@ -665,45 +665,6 @@ if ($logintype != "admin") {
 
           </div>
 
-          <!-- 		<form action="confirmation.php" method="post" autocomplete="false" autocomplete="off"  >
-				<div class="modal-header align-items-center justify-content-center">				
-					<h4 class="modal-title">Advanced Search</h4>
-		
-				</div>
-				<div class="modal-body">				
-					<div class="form-group">
-						<label>Title:</label>
-						<input type="text" class="form-control" required="required" autocomplete="off"  autocomplete="false" >
-					</div>
-					<div class="form-group">
-						<label>Author:</label>
-						<input type="text" class="form-control" required="required" autocomplete="off"  autocomplete="false" >
-					</div>
-	                <div class="form-group">
-						<label>ISBN:</label>
-						<input type="text" class="form-control" required="required" autocomplete="off"  autocomplete="false" >
-					</div>
-					
-
-                    <div class="form-group">
-						<label>Publisher:</label>
-						<input type="text" class="form-control" required="required" autocomplete="off"  autocomplete="false" >
-					</div>
-					<div class="form-group">
-						<label>Keyword:</label>
-						<input type="text" class="form-control" required="required" autocomplete="off"  autocomplete="false" >
-					</div>
-				</div>
-				<div class="modal-footer justify-content-center">
-					
-		
-					<input type="submit" class="btn btn-light"   value="Search" style="background-color:white !important;color:black;width:50%;box-shadow:0px 1px 1px 0px black;">
-				</div>
-			</form> -->
-
-
-
-
         </div>
 
 

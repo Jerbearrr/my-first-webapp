@@ -444,7 +444,7 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $bindType .= "s" ; 
 	  $keywordst = "%" . $title . "%";
 	  
-	  array_splice( $build, 1, 0, array( &$keywordst ) ); 
+	  array_splice( $build, 0, null , array( &$keywordst ) ); 
 
 	  
 
@@ -458,7 +458,7 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $conditions[] = "author LIKE ? ";
 	  $bindType .= "s" ; 
 	  $keywordsa = "%" . $author . "%";
-	    array_splice( $build, 1, 0, array( &$keywordsa ) ); 
+	   array_splice( $build, 1, null, array( &$keywordsa ) ); 
 
 	  
     }
@@ -468,7 +468,7 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $conditions[] = "isbn LIKE  ? ";
 	  $bindType .= "s" ; 
 	  $keywordsi = "%" . $isbn . "%";
-	    array_splice( $build, 1, 0, array( &$keywordsi ) ); 
+		    array_splice( $build, 2, null, array( &$keywordsi ) ); 
 	
     }
     if(! empty($publisher)) {
@@ -477,9 +477,8 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $conditions[] = "publisher LIKE ? ";
 	  $bindType .= "s" ; 
 	  $keywordsp = "%" . $publisher . "%";
-	  array_splice( $build, 1, 0, array( &$keywordsp ) ); 
+	  array_splice( $build, 3, null, array( &$keywordsp ) ); 
 	 
-	  
 	  
     }
 	if(! empty($keyword)) {
@@ -671,31 +670,31 @@ $total_pages = $totali;
 <div class="logincontainer browsecontainer d-flex px-3 pb-3 " style="width:99.3%;">
 <!-- Nav tabs -->
 <div class=" categoriescontentstop w-100  mx-0 d-inline-flex mt-3" style="max-width:100%;">
-<div class="resultsection mt-2 d-flex align-items-center  w-100">
+<div class="resultsection mt-2 d-inline-flex flex-wrap align-items-center  w-100">
 <h5 class="resulttext" > Search Result: </h5>
 <?php 
   if( $title != NULL){
- echo '<h5 class="resultfor mx-1 px-2 py-1" >'.$title.' </h5> ';
+ echo '<h5 class="resultfor d-inline-flex mx-1 px-2 py-1" >'.$title.' </h5> ';
 } 
 ?>
 <?php 
   if( $author != NULL){
- echo '<h5 class="resultfor mx-1 px-2 py-1" >'.$author.' </h5> ';
+ echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$author.' </h5> ';
 } 
 ?>
 <?php 
   if( $isbn != NULL){
- echo '<h5 class="resultfor mx-1 px-2 py-1" >'.$isbn.' </h5> ';
+ echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$isbn.' </h5> ';
 } 
 ?>
 <?php 
   if( $publisher != NULL){
- echo '<h5 class="resultfor mx-1 px-2 py-1" >'.$publisher.' </h5> ';
+ echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$publisher.' </h5> ';
 } 
 ?>
 <?php 
   if( $keyword != NULL){
- echo '<h5 class="resultfor mx-1 px-2 py-1" >'.$keyword.' </h5> ';
+ echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$keyword.' </h5> ';
 } 
 ?>
 
@@ -705,10 +704,10 @@ $total_pages = $totali;
 
 </div>
 
-<div class="d-inline-flex  align-items-center mr-md-0 mr-1" style="border-bottom: 2px solid black;">
+<div class="d-inline-flex  align-items-center mr-md-0 mr-1 mt-auto pb-1" style="border-bottom: 2px solid black;">
 
-        <select id="myselect" class="selectpicker myselect show-tick py-1 "  onchange="location= this.value;"   >
-		
+        <select id="myselect" class="selectpicker myselect show-tick py-1  "  onchange="location= this.value;"   >
+			
 	  <?php if ($sortby == "ASC"){ 
          echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=ASC' selected >Sort: Asc</option>"; 
 	     echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=DESC' >Sort: Desc</option>";
