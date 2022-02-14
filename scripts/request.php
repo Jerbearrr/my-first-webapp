@@ -17,7 +17,7 @@ if (isset($_POST['book_borrowed'])) {
         header("Location: ../ManageTransactionStatus.php?success=false");
         exit();
     } else{
-        header("Location: ../ManageTransactionStatus.php?success=true");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
 
@@ -55,7 +55,7 @@ if (isset($_POST['book_returned'])) {
         header("Location: ../ManageTransactionStatus.php?success=false");
         exit();
     } else{
-        header("Location: ../ManageTransactionStatus.php?success=true");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit();
     }
 }
