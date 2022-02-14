@@ -409,7 +409,6 @@ session_start();
         <?php
         include('database.php');
 
-<<<<<<< HEAD
         $limit = 5;
         if (isset($_GET["page"])) {
           $page  = $_GET["page"];
@@ -418,153 +417,115 @@ session_start();
         };
         $start_from = ($page - 1) * $limit;
         $bookselect = "";
-=======
-$limit = 5;  
-if (isset($_GET["page"])) {
-	$page  = $_GET["page"]; 
-	} 
-	else{ 
-	$page=1;
-	};  
-$start_from = ($page-1) * $limit;  
-$bookselect = "";
 
 
-$title = $_GET['title'];
-$author = $_GET['author'];
-$isbn = $_GET['isbn'];
-$publisher = $_GET['publisher'];
-$keyword = $_GET['keyword'];
+        $title = $_GET['title'];
+        $author = $_GET['author'];
+        $isbn = $_GET['isbn'];
+        $publisher = $_GET['publisher'];
+        $keyword = $_GET['keyword'];
 
-$sortby = $_GET['sortby']??'';
+        $sortby = $_GET['sortby'] ?? '';
 
-if ($sortby == "" || $sortby == "ASC"){
-	$sortby = "ASC";
-}else {
-	$sortby = "DESC";
-}
-
-
-    //Do real escaping here
-
-    $query = "SELECT * FROM books";
-    $conditions = array();
-	$build = array();
-	
-    $bindType = "";
-
-    if(! empty($title)) {
-
-      $conditions[] = "title LIKE ? ";
-	  $bindType .= "s" ; 
-	  $keywordst = "%" . $title . "%";
-	  
-	  array_splice( $build, 0, null , array( &$keywordst ) ); 
-
-	  
+        if ($sortby == "" || $sortby == "ASC") {
+          $sortby = "ASC";
+        } else {
+          $sortby = "DESC";
+        }
 
 
+        //Do real escaping here
 
-	  
-    }
-    if(! empty($author)) {
- 
-	  
-	  $conditions[] = "author LIKE ? ";
-	  $bindType .= "s" ; 
-	  $keywordsa = "%" . $author . "%";
-	   array_splice( $build, 1, null, array( &$keywordsa ) ); 
+        $query = "SELECT * FROM books";
+        $conditions = array();
+        $build = array();
 
-	  
-    }
-    if(! empty($isbn)) {
+        $bindType = "";
 
-	  
-	  $conditions[] = "isbn LIKE  ? ";
-	  $bindType .= "s" ; 
-	  $keywordsi = "%" . $isbn . "%";
-		    array_splice( $build, 2, null, array( &$keywordsi ) ); 
-	
-    }
-    if(! empty($publisher)) {
+        if (!empty($title)) {
 
-	  
-	  $conditions[] = "publisher LIKE ? ";
-	  $bindType .= "s" ; 
-	  $keywordsp = "%" . $publisher . "%";
-	  array_splice( $build, 3, null, array( &$keywordsp ) ); 
-	 
-	  
-    }
-	if(! empty($keyword)) {
-	  
-	  
-	  unset($conditions);
-	 
-	   
-      $conditions[] = "title LIKE ? OR author LIKE ? OR isbn LIKE ? OR publisher LIKE ? ";
-	  
-	  $bindType = "ssss" ;
-	  
-	  $keywordsk = "%" . $keyword . "%";
-	  
-	  
-	  unset($build);
-      $build = array_values(array( &$keywordsk, &$keywordsk, &$keywordsk, &$keywordsk ) );
-	  
-	
-	  
-	 
-	  
-	  
-	  
+          $conditions[] = "title LIKE ? ";
+          $bindType .= "s";
+          $keywordst = "%" . $title . "%";
 
-    }
+          array_splice($build, 0, null, array(&$keywordst));
+        }
+        if (!empty($author)) {
 
-    $sql = $query;
-	$sqlc =  "SELECT * FROM books";
-	
-    if (count($conditions) > 0) {
-      $sql .= " WHERE " . implode(' AND ', $conditions);
-      $sql .= "ORDER BY title $sortby LIMIT $start_from, $limit";
-	  
-	
-	  
-	  $sqlc .= " WHERE " . implode(' AND ', $conditions);
-	  $sqlc .= "ORDER BY title $sortby ";
-	 
-	
-	  $stmt = mysqli_prepare($conn,$sql);
-	  $strti =  mysqli_prepare($conn,$sqlc);
-		
-		
-      call_user_func_array(array($stmt, "bind_param"), array_merge(array($bindType), $build));
-	  call_user_func_array(array($strti, "bind_param"), array_merge(array($bindType), $build));
-      
-	  
-	  mysqli_stmt_execute($strti);
-     
-	 
-	  
-	  mysqli_stmt_store_result($strti);
-	  $totali = mysqli_stmt_num_rows($strti);
-	  
-	 
-	  
-	  
-	
-	 
-	  
 
-    } 
-   
-	
-     mysqli_stmt_execute($stmt);
+          $conditions[] = "author LIKE ? ";
+          $bindType .= "s";
+          $keywordsa = "%" . $author . "%";
+          array_splice($build, 1, null, array(&$keywordsa));
+        }
+        if (!empty($isbn)) {
+
+
+          $conditions[] = "isbn LIKE  ? ";
+          $bindType .= "s";
+          $keywordsi = "%" . $isbn . "%";
+          array_splice($build, 2, null, array(&$keywordsi));
+        }
+        if (!empty($publisher)) {
+
+
+          $conditions[] = "publisher LIKE ? ";
+          $bindType .= "s";
+          $keywordsp = "%" . $publisher . "%";
+          array_splice($build, 3, null, array(&$keywordsp));
+        }
+        if (!empty($keyword)) {
+
+
+          unset($conditions);
+
+
+          $conditions[] = "title LIKE ? OR author LIKE ? OR isbn LIKE ? OR publisher LIKE ? ";
+
+          $bindType = "ssss";
+
+          $keywordsk = "%" . $keyword . "%";
+
+
+          unset($build);
+          $build = array_values(array(&$keywordsk, &$keywordsk, &$keywordsk, &$keywordsk));
+        }
+
+        $sql = $query;
+        $sqlc =  "SELECT * FROM books";
+
+        if (count($conditions) > 0) {
+          $sql .= " WHERE " . implode(' AND ', $conditions);
+          $sql .= "ORDER BY title $sortby LIMIT $start_from, $limit";
 
 
 
-	$bookselect = mysqli_stmt_get_result($stmt);
->>>>>>> 559e6f545586f80f2d2a021ea0928c6819437dbd
+          $sqlc .= " WHERE " . implode(' AND ', $conditions);
+          $sqlc .= "ORDER BY title $sortby ";
+
+
+          $stmt = mysqli_prepare($conn, $sql);
+          $strti =  mysqli_prepare($conn, $sqlc);
+
+
+          call_user_func_array(array($stmt, "bind_param"), array_merge(array($bindType), $build));
+          call_user_func_array(array($strti, "bind_param"), array_merge(array($bindType), $build));
+
+
+          mysqli_stmt_execute($strti);
+
+
+
+          mysqli_stmt_store_result($strti);
+          $totali = mysqli_stmt_num_rows($strti);
+        }
+
+
+        mysqli_stmt_execute($stmt);
+
+
+
+        $bookselect = mysqli_stmt_get_result($stmt);
 
 
         $title = $_GET['title'];
@@ -814,80 +775,75 @@ if ($sortby == "" || $sortby == "ASC"){
               }
               ?>
 
-<<<<<<< HEAD
-=======
-<div class="logincontainer browsecontainer d-flex px-3 pb-3 " style="width:99.3%;">
-<!-- Nav tabs -->
-<div class=" categoriescontentstop w-100  mx-0 d-inline-flex mt-3" style="max-width:100%;">
-<div class="resultsection mt-2 d-inline-flex flex-wrap align-items-center  w-100">
-<h5 class="resulttext" > Search Result: </h5>
-<?php 
-  if( $title != NULL){
- echo '<h5 class="resultfor d-inline-flex mx-1 px-2 py-1" >'.$title.' </h5> ';
-} 
-?>
-<?php 
-  if( $author != NULL){
- echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$author.' </h5> ';
-} 
-?>
-<?php 
-  if( $isbn != NULL){
- echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$isbn.' </h5> ';
-} 
-?>
-<?php 
-  if( $publisher != NULL){
- echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$publisher.' </h5> ';
-} 
-?>
-<?php 
-  if( $keyword != NULL){
- echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >'.$keyword.' </h5> ';
-} 
-?>
->>>>>>> 559e6f545586f80f2d2a021ea0928c6819437dbd
+              <<<<<<< HEAD=======<div class="logincontainer browsecontainer d-flex px-3 pb-3 " style="width:99.3%;">
+                <!-- Nav tabs -->
+                <div class=" categoriescontentstop w-100  mx-0 d-inline-flex mt-3" style="max-width:100%;">
+                  <div class="resultsection mt-2 d-inline-flex flex-wrap align-items-center  w-100">
+                    <h5 class="resulttext"> Search Result: </h5>
+                    <?php
+                    if ($title != NULL) {
+                      echo '<h5 class="resultfor d-inline-flex mx-1 px-2 py-1" >' . $title . ' </h5> ';
+                    }
+                    ?>
+                    <?php
+                    if ($author != NULL) {
+                      echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >' . $author . ' </h5> ';
+                    }
+                    ?>
+                    <?php
+                    if ($isbn != NULL) {
+                      echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >' . $isbn . ' </h5> ';
+                    }
+                    ?>
+                    <?php
+                    if ($publisher != NULL) {
+                      echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >' . $publisher . ' </h5> ';
+                    }
+                    ?>
+                    <?php
+                    if ($keyword != NULL) {
+                      echo '<h5 class="resultfor mx-1 d-inline-flex px-2 py-1" >' . $keyword . ' </h5> ';
+                    }
+                    ?>
+                    >>>>>>> 559e6f545586f80f2d2a021ea0928c6819437dbd
 
-              <p style="color:#666;position:relative;top:10px;">page: <?php echo $page ?> of <?php echo $lastpage ?> </p>
+                    <p style="color:#666;position:relative;top:10px;">page: <?php echo $page ?> of <?php echo $lastpage ?> </p>
 
 
-            </div>
+                  </div>
 
-            <div class="d-inline-flex  align-items-center mr-md-0 mr-1" style="border-bottom: 2px solid black;">
+                  <div class="d-inline-flex  align-items-center mr-md-0 mr-1" style="border-bottom: 2px solid black;">
 
-              <select id="myselect" class="selectpicker myselect show-tick py-1 " onchange="location= this.value;">
+                    <select id="myselect" class="selectpicker myselect show-tick py-1 " onchange="location= this.value;">
 
-<<<<<<< HEAD
-                <?php if ($sortby == "ASC") {
-                  echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=ASC' selected >Sort: Asc</option>";
-                  echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=DESC' >Sort: Desc</option>";
-                } else {
+                      <<<<<<< HEAD <?php if ($sortby == "ASC") {
+                                      echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=ASC' selected >Sort: Asc</option>";
+                                      echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=DESC' >Sort: Desc</option>";
+                                    } else {
 
-                  echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=ASC' >Sort: Asc</option>";
-                  echo "<option value=advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=DESC' selected>Sort: Desc</option>";
-                }
-                ?>
-=======
-<div class="d-inline-flex  align-items-center mr-md-0 mr-1 mt-auto pb-1" style="border-bottom: 2px solid black;">
+                                      echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=ASC' >Sort: Asc</option>";
+                                      echo "<option value=advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=DESC' selected>Sort: Desc</option>";
+                                    }
+                                    ?>=======<div class="d-inline-flex  align-items-center mr-md-0 mr-1 mt-auto pb-1" style="border-bottom: 2px solid black;">
 
-        <select id="myselect" class="selectpicker myselect show-tick py-1  "  onchange="location= this.value;"   >
-			
-	  <?php if ($sortby == "ASC"){ 
-         echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=ASC' selected >Sort: Asc</option>"; 
-	     echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=DESC' >Sort: Desc</option>";
-		 }else {
-	    
-		 echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=ASC' >Sort: Asc</option>"; 
-		 echo "<option value=advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=DESC' selected>Sort: Desc</option>";	 
-		 }
-		 ?>
->>>>>>> 559e6f545586f80f2d2a021ea0928c6819437dbd
+                        <select id="myselect" class="selectpicker myselect show-tick py-1  " onchange="location= this.value;">
+
+                          <?php if ($sortby == "ASC") {
+                            echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=ASC' selected >Sort: Asc</option>";
+                            echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=DESC' >Sort: Desc</option>";
+                          } else {
+
+                            echo "<option value='advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=ASC' >Sort: Asc</option>";
+                            echo "<option value=advancedsearching.php?title=" . $title . "&author=" . $author . "&isbn=" . $isbn . "&publisher=" . $publisher . "&keyword=" . $keyword . "&sortby=DESC' selected>Sort: Desc</option>";
+                          }
+                          ?>
+                          >>>>>>> 559e6f545586f80f2d2a021ea0928c6819437dbd
 
 
-              </select>
+                        </select>
 
 
-              <!-- <select name="sort" id="myselect"  class="py-1 " >
+                        <!-- <select name="sort" id="myselect"  class="py-1 " >
 
 
 	  <option value="nameasc"  >Name: Asc</option>
@@ -895,68 +851,68 @@ if ($sortby == "" || $sortby == "ASC"){
 	  <option value="priceasc"  >Price: Asc</option>
 	  <option value="pricedesc"  >Price: Desc</option>
 </select> -->
-            </div>
-          </div>
-
-          <div id="target-content" class="productsitemlist   mt-2 mx-0 mx-md-0" style="">
-            <?php while ($row = mysqli_fetch_assoc($bookselect)) {
-            ?>
-
-              <?php echo "<a class='card  my-3 productcard d-block text-decoration-none ' href ='Openbook.php?id=" . $row["id"] . "'>"; ?>
-              <div class="row no-gutters d-inline-flex py-md-3 py-2 px-md-3 px-2 w-100">
-                <div class="col d-flex mx-auto h-100 align-items-center justify-content-center productcardimg">
-                  <?php echo '<img class="cardimg text-dark"  alt="No Image Preview " src="' . $row['image'] . '"/>';  ?>
-
-                </div>
-                <div class="card-body p-0 d-flex productcardbody">
-                  <div class="col pr-0">
-                    <h4 class="card-title itemname my-0  w-100 "><?php echo $row["title"]; ?></h4>
-                    <p class="card-text itemprice px-2 bg-dark my-1 d-inline-flex">-<?php echo substr($row['author'], 0, 20) . ((strlen($row['author']) > 20) ? '...' : ''); ?> </p>
-                    <p class="card-text itemdescription my-1  w-100">Adaptation of the first of J.K. Rowling's popular children's novels about Harry Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his closest allies and help him discover the truth about his parents' mysterious deaths.</p>
                   </div>
+                </div>
+
+                <div id="target-content" class="productsitemlist   mt-2 mx-0 mx-md-0" style="">
+                  <?php while ($row = mysqli_fetch_assoc($bookselect)) {
+                  ?>
+
+                    <?php echo "<a class='card  my-3 productcard d-block text-decoration-none ' href ='Openbook.php?id=" . $row["id"] . "'>"; ?>
+                    <div class="row no-gutters d-inline-flex py-md-3 py-2 px-md-3 px-2 w-100">
+                      <div class="col d-flex mx-auto h-100 align-items-center justify-content-center productcardimg">
+                        <?php echo '<img class="cardimg text-dark"  alt="No Image Preview " src="' . $row['image'] . '"/>';  ?>
+
+                      </div>
+                      <div class="card-body p-0 d-flex productcardbody">
+                        <div class="col pr-0">
+                          <h4 class="card-title itemname my-0  w-100 "><?php echo $row["title"]; ?></h4>
+                          <p class="card-text itemprice px-2 bg-dark my-1 d-inline-flex">-<?php echo substr($row['author'], 0, 20) . ((strlen($row['author']) > 20) ? '...' : ''); ?> </p>
+                          <p class="card-text itemdescription my-1  w-100">Adaptation of the first of J.K. Rowling's popular children's novels about Harry Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his closest allies and help him discover the truth about his parents' mysterious deaths.</p>
+                        </div>
+
+                      </div>
+                    </div>
+                    </a>
+
+                  <?php
+                  }
+                  if ($total_pages == 0) { /* code to do */
+                    echo ("No Results Found");
+                  }
+
+                  ?>
+
+
+                  <?= $pagination ?>
+
+
+
+
+
+
 
                 </div>
-              </div>
-              </a>
-
-            <?php
-            }
-            if ($total_pages == 0) { /* code to do */
-              echo ("No Results Found");
-            }
-
-            ?>
 
 
-            <?= $pagination ?>
-
-
-
-
+            </div>
 
 
 
           </div>
+
+
+
+
+
 
 
         </div>
 
 
-
       </div>
 
-
-
-
-
-
-
     </div>
-
-
-  </div>
-
-  </div>
 
 
 </body>
