@@ -914,6 +914,9 @@ color:white;
 }
 
 @media screen and (max-width: 47.99em) {
+.advform form {
+  width: 90%;
+}			   
 		.sign-in-container {
 	left: 0;
 	width: 100%!important;
