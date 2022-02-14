@@ -575,8 +575,8 @@ while($rowb = mysqli_fetch_assoc($bookselectb)) {
 		 else if  ($rowb["status"] == "confirmed" && $useid != "" ) {   
 			 echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'UnBorrowing'  user_id = ".$useid." book_id = ".$id."  >Confirmed</a> ";
 		 }
-		 else if  ($rowb["status"] == "received" && $useid != "" ) {   
-			 echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'UnBorrowing'  user_id = ".$useid." book_id = ".$id."  >Received/a> ";
+		 else if  ($rowb["status"] == "borrowed" && $useid != "" ) {   
+			 echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'UnBorrowing'  user_id = ".$useid." book_id = ".$id."  >Received</a> ";
 		 }
 		 else if  ($rowb["status"] == "returned" && $useid != "" ) {   
 			echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'Borrowing'  user_id = ".$useid." book_id = ".$id." onclick='show_confirm()' >Borrow</a> ";

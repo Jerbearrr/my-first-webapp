@@ -12,7 +12,7 @@ session_start();
 
 <head>
   <title>Browse</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type="image/x-icon">
+  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,7 +59,7 @@ session_start();
         <form action="./scripts/changePass.php" method="post" autocomplete="false" autocomplete="off">
           <div class="modal-header modalhome align-items-center">
             <h4 class="modal-title">Change Password</h4>
-            <button type="button" id="modalbtnclose" class="close" data-dismiss="modal" aria-hidden="true" style="color: #F8ECFF;opacity:1;outline:none;" onclick=window.location.href='
+            <button type="button" id="modalbtnclose" class="close" data-dismiss="modal" aria-hidden="true" style="color: #F8ECFF;opacity:1;outline:none;" onclick="window.location.href='
 <?php
 $s = $_SERVER['REQUEST_URI'] ;
 $v = 'changepass';
@@ -75,7 +75,7 @@ function removeqsvar($url, $varname) {
 																																															   
 
 echo removeqsvar($s,$v);
-?>'>                                                                                                                                                                                        	  
+?>'" >                                                                                                                                                                                        	  
         
 		&times;</button>
           </div>

@@ -534,7 +534,7 @@ echo removeqsvar($s,$v);
                 </div>
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input type="checkbox" id="ch4" onclick="checkAll(this)" onchange="onChange(this)" name="check" value="received" class="form-check-input"> Received
+                    <input type="checkbox" id="ch4" onclick="checkAll(this)" onchange="onChange(this)" name="check" value="Borrowed" class="form-check-input"> Received
                   </label>
                 </div>
                 <div class="form-check-inline">
@@ -583,7 +583,7 @@ echo removeqsvar($s,$v);
 
 
 
-                    echo ' <button name="book_returned" value=' . $request['id'] .  ' class="mx-2 receivedbtn"   >Book is returned</button> </p>';
+               
                     echo '<p class="card-text itemdescription my-1  w-100">Days Remaining: ' . $duration->format('%a days') . '</p>';
                   }
                   echo '</div>
