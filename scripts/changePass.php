@@ -32,21 +32,21 @@ if (password_verify($oldPass, $userPass)) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit();
     }
-
 } else {
     //Password mismatch
 
-	
-		$s = $_SERVER['HTTP_REFERER'] ;
-$v = 'changepass';
-   
-function removeqsvar($url, $varname) {
-	$url = preg_replace('/(&|\?)'.preg_quote($varname).'=[^&]*$/', '', $url);
-    $url = preg_replace('/(&|\?)'.preg_quote($varname).'=[^&]*&/', '$1', $url);
-    return $url;
-}
 
-$link = removeqsvar($s,$v);
+    $s = $_SERVER['HTTP_REFERER'];
+    $v = 'changepass';
+
+    function removeqsvar($url, $varname)
+    {
+        $url = preg_replace('/(&|\?)' . preg_quote($varname) . '=[^&]*$/', '', $url);
+        $url = preg_replace('/(&|\?)' . preg_quote($varname) . '=[^&]*&/', '$1', $url);
+        return $url;
+    }
+
+    $link = removeqsvar($s, $v);
     header("Location: $link?changepass=false");
     exit();
 }
