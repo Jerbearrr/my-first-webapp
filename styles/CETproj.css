@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+body {
+  font-family: "Poppins", sans-serif!important;
+}
+h1, h2, h3, h4, h5, h6, p {
+	  font-family: "Poppins", sans-serif!important;
+}
+
 .leftblock{
 	
 	flex:23%;	
@@ -9,7 +17,7 @@
 
 
 }
-.logo{
+.leftblock .logo{
 	height:340px;
 	flex-direction: column;
 	
@@ -18,7 +26,7 @@
 }
 .sidenav {
 	width:0px;
-	background-image: url(assets/webbg2.png);
+
  background-blend-mode: overlay;
 	background-repeat:no-repeat;
 	background-size:cover;
@@ -126,7 +134,7 @@ background-color:#343a40!important;
 	
 }
 .buttontext{
-	font-weight:700;
+	font-weight:500;
 }
 
 
@@ -174,7 +182,7 @@ background-color:#343a40!important;
   top: 48px;
   align-self: flex-start;
   background-color:white;
-  z-index:1;
+  z-index:2;
   box-shadow: 0 5px 5px rgba(255,255,255,1), 
 			0 5px 5px rgba(255,255,255,1);
 }
@@ -191,7 +199,8 @@ background-color:#343a40!important;
 	
 }
 .recentadded{
-	
+	z-index: 1;
+	position:relative;
 }
 
 
@@ -263,7 +272,7 @@ background-color:#343a40!important;
 .newitems .newitemname {
 	color:black;
 	font-family: cambria;
-	font-weight:bold;
+	font-weight:600;
 	white-space: nowrap;
         overflow: hidden;
         text-overflow: scroll;
@@ -275,7 +284,7 @@ background-color:#343a40!important;
 .newitems .itemauthor {
 	color:#686868;
 	font-family: cambria;
-	font-weight:bold;
+	font-weight:500;
 	font-size:12px;
 	white-space: nowrap;
      overflow: hidden;
@@ -735,6 +744,13 @@ color:white;
 	
 	
 }
+.navactive{
+		color:black!important;
+	background-color:white;
+	margin-left:10px;
+	padding:3px;
+	border-radius:2px;
+}
 .borrowbutton{
 
 	position:absolute;
@@ -770,7 +786,34 @@ color:white;
 	
 
 }
+.reqbtn{
+	
+	text-decoration:none;
+	outline:none;
+	color:white;
+	background-color:#343a40;
 
+	
+}
+.reqbtn:hover{
+
+
+
+	background-color:#a31f1f;
+	color:black;
+	  	box-shadow: 0 2px 2px rgba(0,0,0,0.1), 
+			0 2px 2px rgba(0,0,0,0.1);
+	
+	border-radius:3px;
+	cursor:pointer;
+		text-decoration:none;
+	outline:none;
+	color:white;
+
+
+	
+
+}
 .borrowa:hover{
 
 
@@ -912,11 +955,144 @@ color:white;
 	margin-right: 1rem;
 	
 }
+footer {
+  background: #343A40;
+  color: #fff;
+  padding: 20px 0;
+  
+}
+
+footer .footer-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 20px;
+  margin: 0 auto;
+  
+}
+
+footer .logo span {
+  color: #ffff;
+  font-size: 2.5rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+footer li {
+  list-style: none;
+  /* line-height: 2; */
+  
+}
+
+footer a {
+  text-decoration: none;
+  color: #e2e2e2;
+  font-size: 0.8rem;
+  
+}
+
+footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  
+}
+
+footer .items {
+  flex-basis: 30%;
+}
+
+footer .items .logo {
+  margin-top: 0.5rem;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+footer .items p {
+  margin: 1.2em 0;
+  font-size: 0.8rem;
+}
+
+footer .social {
+  display: flex;
+}
+
+footer .social a {
+  height: 30px;
+  width: 30px;
+  background: #383535;
+  border-radius: 5px;
+  margin: 10px 5px;
+  text-align: center;
+  
+}
+
+footer .social a i {
+  font-size: 1.3em;
+  line-height: 30px;
+  
+}
+
+footer .items h3 {
+  position: relative;
+  font-size: 1.3em;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+footer .items ul {
+margin:0;
+padding: 0;
+}
+
+footer .items h3::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: #acffad;
+  bottom: -4px;
+  left: 0;
+}
+
+footer hr {
+  opacity: 0.3;
+}
+
+footer .end {
+  text-align: center;
+  padding: 20px 0 0 0;
+  color: #979797;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 640px) {
+  footer .items {
+    flex-basis: 80%;
+    margin: auto;
+  }
+
+  footer hr {
+    margin-top: 0.8rem;
+  }
+}
+
+hr {
+	border-top: 1px solid rgba(255, 255, 255, 0.5)!important;
+}
 
 @media screen and (max-width: 47.99em) {
+	.reqbtn{
+
+
+	font-size:0.7em;
+	
+}
 .advform form {
   width: 90%;
-}			   
+}
 		.sign-in-container {
 	left: 0;
 	width: 100%!important;
@@ -1020,7 +1196,7 @@ p {
 .newitems .newitemname {
 	color:black;
 	font-family: cambria;
-	font-weight:bold;
+	font-weight:600;
 	white-space: nowrap;
         overflow: hidden;
         text-overflow: scroll;
@@ -1032,7 +1208,7 @@ p {
 .newitems .itemauthor {
 	color:#686868;
 	font-family: cambria;
-	font-weight:bold;
+	font-weight:500;
 	font-size:0.8rem;
 	white-space: nowrap;
      overflow: hidden;
@@ -1068,7 +1244,9 @@ p {
 }
 @media screen and (min-width: 48em) {
 	
-
+footer{
+	margin-top:12px!important;
+}
 		.itemdescription {
 	color:#343a40;
 	overflow: hidden;
