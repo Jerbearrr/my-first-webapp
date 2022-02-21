@@ -9,8 +9,7 @@ session_start();
 <html lang="en">
 
 <head>
-	<title>Search Books</title>
-																			 
+	<title>Products</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -71,14 +70,8 @@ echo removeqsvar($s,$v);
             <div class="form-group">
               <div class="clearfix">
                 <label>New Password</label>
-																	
 
               </div>
-												   
-																																
-																																  
-															   
-												   
 
               <input type="password" name="newPass" class="form-control" required="required" autocomplete="off" autocomplete="false">
             </div>		  
@@ -92,16 +85,8 @@ echo removeqsvar($s,$v);
 		  
           <div class="modal-footer justify-content-end">
 
-					   
-		   
             <div>
-							  
-								  
               <input type="submit" class="btn btn-dark " value="Change Password">
-			
-							  
-							 
-								   
 
             </div>
           </div>
@@ -112,15 +97,12 @@ echo removeqsvar($s,$v);
   </div>
   
 <div id="Sidenav" class="sidenav bg-light"  >
-		
-		   
 
 <div class="d-flex align-items-center justify-content-center py-1" style=" border-bottom:2px solid #741515;height:9em;width:100%;background-color:#a31f1f;" > 
 <img class="" src="assets/images/puplogo.png" class=""  alt="Logo" style="max-width: 100%;max-height: 100%;align:center;">
 </div>
 
 <div class="mt-2 pb-3 " style=" border-bottom:0.05px solid #444;">
-																		  
 
 <a href="index.php" style="text-decoration: none !important;color:inherit !important;">
 <div class="Sidenavbutton   hvr-sweep-to-right w-100 " onclick="Closesidenav()"> 
@@ -155,10 +137,14 @@ echo removeqsvar($s,$v);
               <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-key mr-3 "></i>Change password</h5>
               </div>
 			  </a>
+				  
+
                 <?php
                 } else if ($_SESSION['logintype'] === 'student') {
-                ?>		
-			  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./bookmarks.php'>"; ?>																					  
+                ?>
+				
+			  <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='./bookmarks.php'>"; ?>
+
 		      <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
               <h5 class=" px-4 my-3 d-inline-flex align-items-center " ><i class="fas fa-book mr-3 "></i>Bookmarks</h5>
               </div>
@@ -189,11 +175,11 @@ echo removeqsvar($s,$v);
               </div>
               </a>
 
+
             <?php
             }
           } else {
             ?>
-		 
 
             <?php echo "<a style='text-decoration: none !important;color:inherit !important;' href ='LoginPage.php'>"; ?>
                    <div class="Sidenavbutton  hvr-sweep-to-right w-100" onclick="Closesidenav()"> 
@@ -205,8 +191,12 @@ echo removeqsvar($s,$v);
           }
           ?>
 
+
+
+
 </div>
 </div>
+
 
 <div id="Sidenavbg" onclick="Closesidenav()" class="sidenavbg disabled " style="display:none;position: fixed; width: 100vw; height: 100vh;background-color:black;z-index:10;opacity:0.3; ">
 </div>
@@ -214,7 +204,6 @@ echo removeqsvar($s,$v);
   <nav class="navbar-expand-md sticky-top py-1" style="background-color:#A31F1F;box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);box-shadow:   0px 0.1px 5px 0px white; z-index:5;">
     <div class="container pl-0 pl-md-1 pl-lg-3 " style="max-width:1150px;">
       <div class="d-flex">
-	  
 
         <div class="d-inline-flex align-items-center ">
           <button onclick="Opensidenav()" class=" ml-2 mr-1 ml-md-0 d-flex d-lg-none my-0 align-items-center  " type="button" style="background-color:white;font-size:25px;border:1px solid #F2FCFF;border-radius:3px;">
@@ -224,6 +213,8 @@ echo removeqsvar($s,$v);
             <img class="d-flex justify-content-center " src="assets/images/puplogo.png" alt="Logo" style="height:38px;">
           </a>
         </div>
+
+
 
         <div class="d-flex ">
           <div class="collapse navbar-collapse ml-0   " id="collapsibleNavbar">
@@ -274,7 +265,6 @@ echo removeqsvar($s,$v);
                 <button class="btn " type="submit" style="box-shadow:none;outline:none;">
                   <i class="fa fa-arrow-right"></i>
                 </button>
-		 
               </div>
 
             </form>
@@ -283,12 +273,13 @@ echo removeqsvar($s,$v);
         <div class="collapse navbar-collapse ml-1   " id="collapsibleNavbar">
           <div class=" d-flex ml-auto ">
 
+
             <ul class="navbar-nav d-none d-lg-inline-flex ">
 
               <?php
               if (isset($_SESSION['logintype'])) {
                 if ($_SESSION['logintype'] === 'admin') { ?>
-											   
+
                   <li class="nav-item bg-sm-dark">
                     <a class="nav-link navlinkbuttons" href="./ManageBookspageAdd.php">Manage Books</a>
                   </li>
@@ -319,36 +310,27 @@ echo removeqsvar($s,$v);
               </li>
             </ul>
 
-		   
-	   
-		
           </div>
         </div>
-																											 
-																				   
 
-																	
-																																										   
-									  
-																				
-										 
-				
-			
 
-			
-		  
 
       </div>
     </div>
 
   </nav>
 
+
+
+
+
+
+
 <div class="container mt-0 px-lg-3  px-md-2 px-0 navchange h-25 " style="max-width:1150px;">
 
 <div class="d-inline-flex w-100" >
 
 <div class="leftblock d-none d-lg-block mt-3 " >
-		
 
 <div class="logo d-flex align-items-center justify-content-center mb-3 w-100 bg-dark">
 <div class="logobox d-flex align-items-center justify-content-center w-100 bg-dark  px-4 py-4">
@@ -406,8 +388,6 @@ if (isset($_SESSION['logintype'])){
 <div class="pt-3 sticktodapat d-none d-lg-block">
 <div class="searchbox d-flex align-items-center">
 <form class="input-group ml-2 d-inline-flex" action="search.php" method="GET" >
-		   
-																										  
 
 <i class="fas fa-search mr-2 align-items-center  my-auto"></i>
 <input type="text" class="form-control my-auto" name="searchtext" placeholder="Search " style="border:0;height:30px;padding-left:2px; outline:none;box-shadow:none;">
@@ -418,30 +398,14 @@ if (isset($_SESSION['logintype'])){
     </div>
 
 </form>
-																	  
-																									  
-																	
-															   
 </div>
 </div>
-		 
 <?php
 include('database.php');
-															 
-																					   
-		  
-		 
-		  
-										 
-																						  
 
 $searchtext = $_GET['searchtext'];
-																	
 
 $sortby = $_GET['sortby']??'';
-																						 
-			
-		   
 
 if ($sortby == "" || $sortby == "ASC"){
 	$sortby = "ASC";
@@ -449,10 +413,6 @@ if ($sortby == "" || $sortby == "ASC"){
 	$sortby = "DESC";
 }
 
-		   
-	   
-			 
-		
 
 $limit = 5;  
 if (isset($_GET["page"])) {
@@ -465,62 +425,16 @@ $start_from = ($page-1) * $limit;
 
 $searchedtext = "%" . $searchtext . "%";
 $sql = "SELECT * FROM books WHERE title LIKE ? OR author LIKE ? ORDER BY title $sortby LIMIT $start_from, $limit ";
-	   
-		 
 
-		 
 
-																															 
 
 $stmt = mysqli_prepare($conn,$sql);
 mysqli_stmt_bind_param($stmt, "ss", $searchedtext, $searchedtext);
-																					
 
 mysqli_stmt_execute($stmt);
  
 $bookselect = mysqli_stmt_get_result($stmt);
  
-										  
-				 
-			 
-
-			 
-		   
-		  
-		 
-							
-
-									  
-
-									
-
-											
-					 
-			
-					  
-	 
-
-
-			   
-							   
-							
-			
-			   
-	  
-									   
-
-											
-																													   
-
-
-
-										
-																	  
-
-							   
-
-												
-
 
 
 
@@ -537,9 +451,6 @@ $bookselect = mysqli_stmt_get_result($stmt);
 	$adjacents = 1;
 
 	
-				   
-
-
 	/* 
 	   First get total number of rows in data table. 
 	   If you have a WHERE clause in your query, make sure you mirror it here.
@@ -559,15 +470,6 @@ $total_pages = $row_db[0];
 	/* Get data. */
 
 	
-														 
-			  
-																		   
-		
-																 
-
-				   
-
-
 	/* Setup page vars for display. */
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
 	$prev = $page - 1;							//previous page is page - 1
@@ -588,9 +490,9 @@ $total_pages = $row_db[0];
 		$pagination .= "<div class=\"pagination\">";
 		//previous button
 		if ($page > 1) 
-			$pagination.= "<a class=' page mr-1 px-2 pb-1' href='search.php?searchtext=".$searchtext."&page=".$prev."&sortby=".$sortby."'>«</a>";
+			$pagination.= "<a class=' page mr-1 px-2 ' href='search.php?searchtext=".$searchtext."&page=".$prev."&sortby=".$sortby."'>«</a>";
 		else
-			$pagination.= "<span class=\"disabled pb-1 d-none\">« previous</span>";	
+			$pagination.= "<span class=\"disabled  d-none\">« previous</span>";	
 		
 		
 		//pages	
@@ -631,42 +533,7 @@ $total_pages = $row_db[0];
 					if ($counter == $page)
 						$pagination.= "<span class=\"activepage-items mr-1 px-2 \">$counter</span>";
 					else
-																			   
-
-
-			 
-																					  
-	  
-															 
-							 
-																					 
-		   
-																																								
-	   
-																			
-	  
-												 
-										 
-																		
-							  
-																					  
-			
 						$pagination.= "<a class='  page mr-1 px-2 ' href='search.php?searchtext=".$searchtext."&page=".$counter."&sortby=".$sortby."' >$counter</a>";					
-		
-														 
-																																						   
-																																								   
-	   
-												
-																				 
-																																		   
-																																		   
-														 
-																						
-							  
-																					  
-			
-																																								   
 				}
 				$pagination.= "<span class=\"mr-1 \">...</span>";
 				$pagination.= "<a class='  page mr-1 px-2 ' href='search.php?searchtext=".$searchtext."&page=".$lpm1."&sortby=".$sortby."' >$lpm1</a>";
@@ -682,25 +549,15 @@ $total_pages = $row_db[0];
 				{
 					if ($counter == $page)
 						$pagination.= "<span class=\"activepage-items mr-1 px-2 \">$counter</span>";
-			
-																																									
-		
-	   
-	  
-
-				  
-							  
-																																							 
 					else
 						$pagination.= "<a class='   page mr-1 px-2  ' href='search.php?searchtext=".$searchtext."&page=".$counter."&sortby=".$sortby."'>$counter</a>";					
-							   
 				}
 			}
 		}
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<a class='   page mr-1 px-2 pb-1 ' href='search.php?searchtext=".$searchtext."&page=".$next."&sortby=".$sortby."' >»</a>";
+			$pagination.= "<a class='   page mr-1 px-2  ' href='search.php?searchtext=".$searchtext."&page=".$next."&sortby=".$sortby."' >»</a>";
 		else
 			$pagination.= "<span class=\"disabled d-none\">next »</span>";
 		$pagination.= "</div>\n";		
@@ -737,15 +594,9 @@ $total_pages = $row_db[0];
 		 }
 		 ?>
 
-									 
-																												  
-																										   
-				
 
         </select>
 		
-		 
-		  
 
 </div>
 </div>
@@ -779,46 +630,17 @@ $total_pages = $row_db[0];
 
 ?>
 
-											   
-												 
-												 
-												   
-			 
-			
-		   
-																					
-															
-		
 
 <?=$pagination?>
 	
-																									   
-																																 
 
-			  
-														  
-							   
-																						
-																																										  
-																					
 
-			   
 
-			  
-			 
-		   
 
-		   
-	   
-											   
-								 
-	   
 
-		
 
 </div>
 
-						
 
 </div>
 
@@ -827,14 +649,10 @@ $total_pages = $row_db[0];
 </div>
 
 
-		   
-
-
-		  
 
 
 
-		 
+
 
 </div>
 
@@ -842,14 +660,6 @@ $total_pages = $row_db[0];
 </div>
 
 </div>
-
-
-		
-
-
-	   
-
-	   
 
 
 </body>

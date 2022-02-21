@@ -8,8 +8,7 @@ include('database.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Advanced Search</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
+  <title>Products</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -458,7 +457,7 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $conditions[] = "author LIKE ? ";
 	  $bindType .= "s" ; 
 	  $keywordsa = "%" . $author . "%";
-	   array_splice( $build, 1, null, array( &$keywordsa ) ); 
+	    array_splice( $build, 1, null, array( &$keywordsa ) ); 
 
 	  
     }
@@ -468,7 +467,7 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $conditions[] = "isbn LIKE  ? ";
 	  $bindType .= "s" ; 
 	  $keywordsi = "%" . $isbn . "%";
-		    array_splice( $build, 2, null, array( &$keywordsi ) ); 
+	    array_splice( $build, 2, null, array( &$keywordsi ) ); 
 	
     }
     if(! empty($publisher)) {
@@ -479,6 +478,7 @@ if ($sortby == "" || $sortby == "ASC"){
 	  $keywordsp = "%" . $publisher . "%";
 	  array_splice( $build, 3, null, array( &$keywordsp ) ); 
 	 
+	  
 	  
     }
 	if(! empty($keyword)) {
@@ -513,7 +513,7 @@ if ($sortby == "" || $sortby == "ASC"){
       $sql .= " WHERE " . implode(' AND ', $conditions);
       $sql .= "ORDER BY title $sortby LIMIT $start_from, $limit";
 	  
-	
+
 	  
 	  $sqlc .= " WHERE " . implode(' AND ', $conditions);
 	  $sqlc .= "ORDER BY title $sortby ";
@@ -593,9 +593,9 @@ $total_pages = $totali;
 		$pagination .= "<div class=\"pagination\">";
 		//previous button
 		if ($page > 1) 
-			$pagination.= "<a class=' page mr-1 px-2 pb-1' href='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&page=".$prev."&sortby=".$sortby."'>«</a>";
+			$pagination.= "<a class=' page mr-1 px-2 ' href='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&page=".$prev."&sortby=".$sortby."'>«</a>";
 		else
-			$pagination.= "<span class=\"disabled pb-1 d-none\">« previous</span>";	
+			$pagination.= "<span class=\"disabled  d-none\">« previous</span>";	
 		
 		
 		//pages	
@@ -660,7 +660,7 @@ $total_pages = $totali;
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<a class='   page mr-1 px-2 pb-1 ' href='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&page=".$next."&sortby=".$sortby."' >»</a>";
+			$pagination.= "<a class='   page mr-1 px-2  ' href='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&page=".$next."&sortby=".$sortby."' >»</a>";
 		else
 			$pagination.= "<span class=\"disabled d-none\">next »</span>";
 		$pagination.= "</div>\n";		
@@ -707,7 +707,7 @@ $total_pages = $totali;
 <div class="d-inline-flex  align-items-center mr-md-0 mr-1 mt-auto pb-1" style="border-bottom: 2px solid black;">
 
         <select id="myselect" class="selectpicker myselect show-tick py-1  "  onchange="location= this.value;"   >
-			
+		
 	  <?php if ($sortby == "ASC"){ 
          echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=ASC' selected >Sort: Asc</option>"; 
 	     echo "<option value='advancedsearching.php?title=".$title."&author=".$author."&isbn=".$isbn."&publisher=".$publisher."&keyword=".$keyword."&sortby=DESC' >Sort: Desc</option>";

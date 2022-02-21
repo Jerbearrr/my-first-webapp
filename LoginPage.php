@@ -7,8 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Log In</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
+  <title>Products</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -475,3 +474,4 @@
 </body>
 
 </html>
+

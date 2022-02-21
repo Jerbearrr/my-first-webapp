@@ -8,8 +8,8 @@ include('database.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Search Results</title>
- <meta charset="utf-8">
+  <title>Products</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -482,9 +482,9 @@ $total_pages = $row_db[0];
 		$pagination .= "<div class=\"pagination\">";
 		//previous button
 		if ($page > 1) 
-			$pagination.= "<a class=' page mr-1 px-2 pb-1' href='Searchresult.php?subsubject=".$subsubject."&page=".$prev."&sortby=".$sortby."'>«</a>";
+			$pagination.= "<a class=' page mr-1 px-2 ' href='Searchresult.php?subsubject=".$subsubject."&page=".$prev."&sortby=".$sortby."'>«</a>";
 		else
-			$pagination.= "<span class=\"disabled pb-1 d-none\">« previous</span>";	
+			$pagination.= "<span class=\"disabled  d-none\">« previous</span>";	
 		
 		
 		//pages	
@@ -549,7 +549,7 @@ $total_pages = $row_db[0];
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<a class='   page mr-1 px-2 pb-1' href='Searchresult.php?subsubject=".$subsubject."&page=".$next."&sortby=".$sortby."' >»</a>";
+			$pagination.= "<a class='   page mr-1 px-2 ' href='Searchresult.php?subsubject=".$subsubject."&page=".$next."&sortby=".$sortby."' >»</a>";
 		else
 			$pagination.= "<span class=\"disabled d-none \">next »</span>";
 		$pagination.= "</div>\n";		

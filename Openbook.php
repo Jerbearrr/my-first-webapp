@@ -21,8 +21,7 @@ $id = $_GET['id'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Book Details</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
+  <title>Products</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -536,7 +535,7 @@ if(session_status() == PHP_SESSION_ACTIVE){
    
 
   
-$result_db = mysqli_query($conn,"SELECT * FROM `bookmarks` WHERE book_id='".$id."' && user_id='".$useid."'  "); 
+$result_db = mysqli_query($conn,"SELECT COUNT(*) FROM bookmarks WHERE book_id='".$id."' && user_id='".$useid."'  "); 
 $row_db = mysqli_fetch_row($result_db);  
 $bookm= $row_db[0]??'';  
 
@@ -575,8 +574,11 @@ while($rowb = mysqli_fetch_assoc($bookselectb)) {
 		 else if  ($rowb["status"] == "confirmed" && $useid != "" ) {   
 			 echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'UnBorrowing'  user_id = ".$useid." book_id = ".$id."  >Confirmed</a> ";
 		 }
-		 else if  ($rowb["status"] == "borrowed" && $useid != "" ) {   
-			 echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'UnBorrowing'  user_id = ".$useid." book_id = ".$id."  >Received</a> ";
+		 else if  ($rowb["status"] == "Borrowed" && $useid != "" ) {   
+		                      $today = new DateTime("Now");
+                              $deadline = new DateTime($rowb['date_of_process'] . '+ 7 days');
+                              $duration = date_diff($deadline, $today);
+			 echo ' <a id="borrowbtn" class="borrowa  px-2 py-1" method = "UnBorrowing"  user_id = ".$useid." book_id = ".$id."  >Received- ' . $duration->format('%a d') . ' </a> ';
 		 }
 		 else if  ($rowb["status"] == "returned" && $useid != "" ) {   
 			echo " <a id='borrowbtn' class='borrowa  px-2 py-1' method = 'Borrowing'  user_id = ".$useid." book_id = ".$id." onclick='show_confirm()' >Borrow</a> ";
@@ -612,9 +614,13 @@ while($rowb = mysqli_fetch_assoc($bookselectb)) {
 	   
 	   echo"<a class='bg-dark text-light px-2 py-1 mx-1' data-toggle='modal' data-target='#dlmodal' ><i class='fas fa-download '  ></i></a>";	 
 	     $datediff = abs(strtotime($compare_due) - strtotime($compare_current));
-         
-        echo round($datediff / (60 * 60 * 24)),'d';
-         
+ ?>
+
+<?php 
+        echo '<a  class="px-1 py-1 text-light text-decoration-none" style="background-color:#a31f1f;border-radius:40px;">'.round($datediff / (60 * 60 * 24)),'d</a>';
+ ?>
+
+<?php 
    }else if($num_rows > 0 && $compare_due <= $compare_current){
 	   
 	   echo"<a class='bg-dark text-light px-2 py-1 mx-1 text-decoration-none'  >Expired</a>";	
@@ -726,36 +732,36 @@ echo '<img class="bookimg text-center "  alt="No Image Preview" src="./uploads/i
 mysqli_close($conn);
 ?>
 <div class="recentlyadded  mt-3">
-<h3 class=" pb-1 px-1 bg-dark text-light"> Summary </h3>
-<div class="recentadded mt-1  h-100 w-100 px-2 py-2">
-<h5> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+<h5 class=" py-1 px-1 bg-dark text-light"> Summary </h5>
+<div class="recentadded mt-1  h-100 w-100 px-2 pt-1 ">
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
 cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est 
 laborum. </h5>
-</div>
+</p>
 
 </div>
 <div class="recentlyadded  mt-1">
-<h4 class=" pb-1 px-1 bg-dark text-light"> Date Added </h4>
-<div class="recentadded mt-1  h-100 w-100 px-2 py-2">
-<h5> February 21, 2021 </h5>
+<h5 class=" py-1 px-1 bg-dark text-light"> Date Added </h5>
+<div class="recentadded mt-1  h-100 w-100 px-2 pt-1">
+<p> February 21, 2021 </p>
 </div>
 </div>
 
 <div class="recentlyadded  mt-1">
-<h4 class=" pb-1 px-1 bg-dark text-light"> Condition </h4>
-<div class="recentadded mt-1 h-100 w-100 px-2 py-2">
-<h5> Good </h5>
+<h5 class=" py-1 px-1 bg-dark text-light"> Condition </h5>
+<div class="recentadded mt-1 h-100 w-100 px-2 pt-1 ">
+<p> Good </p>
 </div>
 </div>
 
 <div class="recentlyadded mt-1">
-<h4 class=" pb-1 px-1 bg-dark text-light"> Call Number </h4>
-<div class="recentadded mt-1  h-100 w-100 px-2 py-2">
-<h5> Q1 .S35 </h5>
+<h5 class="py-1 px-1 bg-dark text-light"> Call Number </h5>
+<div class="recentadded mt-1  h-100 w-100 px-2 pt-1">
+<p> Q1 .S35 </p>
 </div>
 </div>
 

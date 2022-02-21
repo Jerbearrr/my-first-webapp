@@ -17,8 +17,7 @@ if ($logintype != "student") {
 <html lang="en">
 
 <head>
-	<title>My Bookmarks</title>
-	<link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
+	<title>Products</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -301,7 +300,7 @@ echo removeqsvar($s,$v);
                 } else if ($_SESSION['logintype'] === 'student') {
                 ?>
                   <li class="nav-item bg-sm-dark">
-                    <a class="nav-link navlinkbuttons" href="bookmarks.php">Bookmarks</a>
+                    <a class="nav-link navlinkbuttons navactive" href="bookmarks.php">Bookmarks</a>
                   </li>
                   <li class="nav-item bg-sm-dark">
                     <a class="nav-link navlinkbuttons" href="BorrowRecords.php">Borrow Records</a>
@@ -505,9 +504,9 @@ echo removeqsvar($s,$v);
 					$pagination .= "<div class=\"pagination\">";
 					//previous button
 					if ($page > 1)
-						$pagination .= "<a class=' page mr-1 px-2 pb-1' href='bookmarks.php?page=" . $prev . "'>«</a>";
+						$pagination .= "<a class=' page mr-1 px-2 ' href='bookmarks.php?page=" . $prev . "'>«</a>";
 					else
-						$pagination .= "<span class=\"disabled pb-1 d-none\">« previous</span>";
+						$pagination .= "<span class=\"disabled  d-none\">« previous</span>";
 
 
 					//pages	
@@ -557,14 +556,14 @@ echo removeqsvar($s,$v);
 								if ($counter == $page)
 									$pagination .= "<span class=\"activepage-items mr-1 px-2 \">$counter</span>";
 								else
-									$pagination .= "<a class='   page mr-1 px-2 pb-1 ' href='bookmarks.php?page=" . $counter . "'>$counter</a>";
+									$pagination .= "<a class='   page mr-1 px-2  ' href='bookmarks.php?page=" . $counter . "'>$counter</a>";
 							}
 						}
 					}
 
 					//next button
 					if ($page < $counter - 1)
-						$pagination .= "<a class='   page mr-1 px-2 pb-1' href='bookmarks.php?page=" . $next . "' >»</a>";
+						$pagination .= "<a class='   page mr-1 px-2 ' href='bookmarks.php?page=" . $next . "' >»</a>";
 					else
 						$pagination .= "<span class=\"disabled d-none\">next »</span>";
 					$pagination .= "</div>\n";
@@ -596,8 +595,8 @@ echo removeqsvar($s,$v);
 								</div>
 								<div class="card-body p-0 d-flex productcardbody">
 									<div class="col pr-0">
-										<h4 class="card-title itemname my-0  w-100 "><?php echo $row["title"]; ?></h4>
-										<p class="card-text itemprice px-2 bg-dark my-1 d-inline-flex">-<?php echo substr($row['author'], 0, 20) . ((strlen($row['author']) > 20) ? '...' : ''); ?> </p>
+										<h5 class="card-title itemname my-0  w-100 "><?php echo $row["title"]; ?></h5>
+										<p class="card-text itemprice px-2 bg-dark my-2 d-inline-flex ">-<?php echo substr($row['author'], 0, 20) . ((strlen($row['author']) > 20) ? '...' : ''); ?> </p>
 										<p class="card-text itemdescription my-1  w-100">Adaptation of the first of J.K. Rowling's popular children's novels about Harry Potter, a boy who learns on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child to become a student at Hogwarts, an English boarding school for wizards. There, he meets several friends who become his closest allies and help him discover the truth about his parents' mysterious deaths.</p>
 									</div>
 

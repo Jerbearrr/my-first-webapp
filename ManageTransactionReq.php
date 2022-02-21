@@ -43,8 +43,7 @@ if ($logintype != "admin") {
 <html lang="en">
 
 <head>
-  <title>Manage Transaction - Book Requests</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
+  <title>Products</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -81,7 +80,6 @@ if($changepass == 'false'){
 	
 }
 
-$sorter="";
 ?>
 </head>
 
@@ -330,7 +328,7 @@ echo removeqsvar($s,$v);
                     <a class="nav-link navlinkbuttons" href="./ManageBookspageAdd.php">Manage Books</a>
                   </li>
                   <li class="nav-item bg-sm-dark">
-                    <a class="nav-link navlinkbuttons" href="./ManageTransactionReq.php">Manage Transactions</a>
+                    <a class="nav-link navlinkbuttons navactive" href="./ManageTransactionReq.php">Manage Transactions</a>
                   </li>
 
                 <?php
@@ -459,8 +457,8 @@ echo removeqsvar($s,$v);
                     </label>
                   </div>
                   <div class="">
-                    <input class="borrowa" type="submit" name="AcceptRequests" value="Accept Request" class="requestbutton px-2 py-1">
-                    <input class="borrowa" type="submit" name="RejectRequests" value="Reject Request" class="requestbutton px-2 py-1">
+                    <input class="reqbtn" type="submit" name="AcceptRequests" value="Accept Request" class="requestbutton px-2 py-1">
+                    <input class="reqbtn" type="submit" name="RejectRequests" value="Reject Request" class="requestbutton px-2 py-1">
                   </div>
 
                 </div>
@@ -480,8 +478,8 @@ echo removeqsvar($s,$v);
                         </div>
                       </div>
                       <div class="col d-flex mx-auto  align-items-center justify-content-center productcardimgcheck">
-                        <div class="form-check-inline mx-0 my-0 px-auto h-100">
-                          <label class="form-check-label mt-2 ">
+                        <div class="form-check-inline d-block d-md-inline-flex mx-0 my-0 px-auto h-100" >
+                          <label class="form-check-label mt-2 px-1 px-md-0">
                             <input type="checkbox" name="requestsId[]" class="form-check-input mx-0 my-0" value="' . $request['id'] . '">
                           </label>
                           <div class="px-1 px-md-2 d-block  align-items-center justify-content-center productcardimgcheck">
@@ -489,6 +487,7 @@ echo removeqsvar($s,$v);
 							              <button name="RejectRequest" value="' . $request['id'] . '" class=" fas my-2 fa-times chkbtn d-flex align-items-center justify-content-center" style="width:80%;"></button>
                           </div>
                         </div>
+						
                       </div>
 
                     </div>

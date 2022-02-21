@@ -9,7 +9,6 @@ include('database.php');
 <html lang="en">
 <head>
   <title>Products</title>
-  <link rel="icon" href="./assets/images/puplogo.png" type = "image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
