@@ -7,7 +7,7 @@ if (isset($_POST['search'])) {
 
 
 //SEARCH FOR BOOKS IN THE DATABASE RELATED TO THE KEYWORD($keyword)
-$query = "SELECT * FROM books where title LIKE CONCAT('%',?,'%') LIMIT 5";
+$query = "SELECT * FROM books where title LIKE CONCAT('%',?,'%') ";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, 's', $keyword);
 mysqli_stmt_execute($stmt);

@@ -12,7 +12,7 @@ function checkAll(checkBox) {
 }
 
 $(document).ready(function () {
-
+	
 
 
   $("#search").keyup(function () {
@@ -32,7 +32,7 @@ $(document).ready(function () {
       })
     }
   });
-
+  
   $('.owlhero').owlCarousel({
 
     margin: 5,
@@ -79,8 +79,8 @@ $(document).ready(function () {
     }
   });
   $('#myModal').on('hidden.bs.modal', function (e) {
-    $("#modalbtnclose").click();
-  });
+  $("#modalbtnclose").click();
+});
   const signUpButton = document.getElementById('signUp');
   const signInButton = document.getElementById('signIn');
   const container = document.getElementById('container');
@@ -94,15 +94,15 @@ $(document).ready(function () {
   signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
   });
-
-  signUpButton2.addEventListener('click', () => {
+  
+   signUpButton2.addEventListener('click', () => {
     container.classList.add("right-panel-active");
   });
 
   signInButton2.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
   });
-
+  
 
 
 });
@@ -128,11 +128,11 @@ function readURL(input) {
 }
 
 
-function Opensidenav() {
+function Opensidenav (){
   document.getElementById("Sidenav").style.width = "260px";
   document.getElementById("Sidenav").style.transition = "0.5s";
   document.getElementById("Sidenavbg").style.display = "block";
-
+  
 
 
 
@@ -140,9 +140,9 @@ function Opensidenav() {
 
 
 }
-function Closesidenav() {
+function Closesidenav (){
   document.getElementById("Sidenav").style.width = "0px";
   document.getElementById("Sidenav").style.transition = "0.2s";
-  document.getElementById("Sidenavbg").style.display = "none";
+   document.getElementById("Sidenavbg").style.display = "none";
 
-}
+ }
