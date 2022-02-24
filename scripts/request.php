@@ -39,10 +39,10 @@ if (isset($_POST['book_returned'])) {
     
     if (strtotime($returnDate) > strtotime($today->format("Y-m-d H:i:s"))) {
         //RETURN OF THE BOOK IS LATE
-        $isOnTime = false;
+        $isOnTime = 'false';
     } else {
         //RETURN OF THE BOOK IS ON TIME
-        $isOnTime = true;
+        $isOnTime = 'true';
     }
     
     $query = "UPDATE book_requests SET status = 'returned', return_isLate = ? WHERE id = ?";
