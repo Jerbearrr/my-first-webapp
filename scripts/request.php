@@ -51,13 +51,13 @@ if (isset($_POST['book_returned'])) {
     mysqli_stmt_execute($stmt);
 
 
-    if(mysqli_stmt_errno($stmt)){
-        header("Location: ../ManageTransactionStatus.php?success=false");
-        exit();
-    } else{
-        header("Location: ../ManageTransactionStatus.php?success=true");
-        exit();
-    }
+    // if(mysqli_stmt_errno($stmt)){
+    //     header("Location: ../ManageTransactionStatus.php?success=false");
+    //     exit();
+    // } else{
+    //     header("Location: ../ManageTransactionStatus.php?success=true");
+    //     exit();
+    // }
 }
 
 if (isset($_POST['requestsId'])) {
