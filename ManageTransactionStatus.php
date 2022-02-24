@@ -593,14 +593,16 @@ echo removeqsvar($s,$v);
                   }
 
                   if ($request['status'] == "returned") {
+                    $date_of_return = new DateTime($request['date_of_return']);
+                    $date_of_process = new DateTime($request['date_of_process']);
                     if ($request['return_isLate']) {
                       echo '<p class="card-text itemdescription my-1  w-100">Returned On Time: No </p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Targeted Return Date: ' . $request['date_of_return'] . '</p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Actual Return Date: ' . $request['date_of_process'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Targeted Return Date: ' . date_format($date_of_return, 'F j, Y g:i:s A') . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Actual Return Date: ' . date_format($date_of_process, 'F j, Y g:i:s A') . '</p>';
                     } else {
                       echo '<p class="card-text itemdescription my-1  w-100">Returned On Time: Yes </p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Targeted Return Date: ' . $request['date_of_return'] . '</p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Actual Return Date: ' . $request['date_of_process'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Targeted Return Date: ' . date_format($date_of_return, 'F j, Y g:i:s A') . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Actual Return Date: ' . date_format($date_of_process, 'F j, Y g:i:s A') . '</p>';
                     }
                   }
                   echo '</div>
