@@ -585,7 +585,7 @@ echo removeqsvar($s,$v);
 
                   if ($request['status'] == "borrowed") {
                     $today = new DateTime("Now");
-                    $deadline = new DateTime($request['date_of_process'] . '+ 7 days');
+                    $deadline = new DateTime($request['date_of_return']);
                     $duration = date_diff($deadline, $today);
 
                     echo ' <button name="book_returned" value=' . $request['id'] .  ' class="mx-2 receivedbtn"   >Book is returned</button> </p>';
@@ -595,10 +595,10 @@ echo removeqsvar($s,$v);
                   if ($request['status'] == "returned") {
                     if ($request['return_isLate']) {
                       echo '<p class="card-text itemdescription my-1  w-100">Returned On Time: No </p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Return Date: ' . $request['date_of_process'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Return Date: ' . $request['date_of_return'] . '</p>';
                     } else {
                       echo '<p class="card-text itemdescription my-1  w-100">Returned On Time: Yes </p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Return Date: ' . $request['date_of_process'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Return Date: ' . $request['date_of_return'] . '</p>';
                     }
                   }
                   echo '</div>
