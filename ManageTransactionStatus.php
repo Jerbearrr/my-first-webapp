@@ -583,7 +583,7 @@ echo removeqsvar($s,$v);
                   }
 
 
-                  if ($request['status'] == "Borrowed") {
+                  if ($request['status'] == "borrowed") {
                     $today = new DateTime("Now");
                     $deadline = new DateTime($request['date_of_process'] . '+ 7 days');
                     $duration = date_diff($deadline, $today);
