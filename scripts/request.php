@@ -50,7 +50,9 @@ if (isset($_POST['book_returned'])) {
     mysqli_stmt_bind_param($stmt, "si",$isOnTime, $request);
     mysqli_stmt_execute($stmt);
 
-
+    echo $request;
+    echo $returnDate;
+    echo $isOnTime;
     // if(mysqli_stmt_errno($stmt)){
     //     header("Location: ../ManageTransactionStatus.php?success=false");
     //     exit();
