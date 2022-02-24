@@ -595,10 +595,12 @@ echo removeqsvar($s,$v);
                   if ($request['status'] == "returned") {
                     if ($request['return_isLate']) {
                       echo '<p class="card-text itemdescription my-1  w-100">Returned On Time: No </p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Return Date: ' . $request['date_of_return'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Targeted Return Date: ' . $request['date_of_return'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Actual Return Date: ' . $request['date_of_process'] . '</p>';
                     } else {
                       echo '<p class="card-text itemdescription my-1  w-100">Returned On Time: Yes </p>';
-                      echo '<p class="card-text itemdescription my-1  w-100">Return Date: ' . $request['date_of_return'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Targeted Return Date: ' . $request['date_of_return'] . '</p>';
+                      echo '<p class="card-text itemdescription my-1  w-100">Actual Return Date: ' . $request['date_of_process'] . '</p>';
                     }
                   }
                   echo '</div>
