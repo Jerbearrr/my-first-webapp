@@ -17,7 +17,7 @@ if (isset($_POST['book_borrowed'])) {
         header("Location: ../ManageTransactionStatus.php?success=false");
         exit();
     } else{
-        header("Location: ../ManageTransactionStatus.php?success=true");
+           header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
 
@@ -39,22 +39,23 @@ if (isset($_POST['book_returned'])) {
     
     if (strtotime($returnDate) > strtotime($today->format("Y-m-d H:i:s"))) {
         //RETURN OF THE BOOK IS LATE
-        $isOnTime = 0;
+        $isOnTime = false;
     } else {
         //RETURN OF THE BOOK IS ON TIME
-        $isOnTime = 1;
+        $isOnTime = true;
     }
     
     $query = "UPDATE book_requests SET status = 'returned', return_isLate = ? WHERE id = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ii",$isOnTime, $request);
+    mysqli_stmt_bind_param($stmt, "si",$isOnTime, $request);
     mysqli_stmt_execute($stmt);
+
 
     if(mysqli_stmt_errno($stmt)){
         header("Location: ../ManageTransactionStatus.php?success=false");
         exit();
     } else{
-        header("Location: ../ManageTransactionStatus.php?success=true");
+           header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit();
     }
 }
