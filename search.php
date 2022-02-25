@@ -403,7 +403,7 @@ if (isset($_SESSION['logintype'])){
 <?php
 include('database.php');
 
-$searchtext = $_GET['searchtext'];
+$searchtext = htmlspecialchars($_GET['searchtext']);
 
 $sortby = $_GET['sortby']??'';
 
