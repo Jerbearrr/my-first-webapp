@@ -13,7 +13,7 @@ mysqli_stmt_execute($stmt);
 $stmt_result = mysqli_stmt_get_result($stmt);
 
 while ($result = mysqli_fetch_assoc($stmt_result)) {
-    $link = "../ManageBookspageEdit.php?id=" . urlencode($result['id']) . "&image=" . urlencode($result['image']) . "&title=" . urlencode($result['title']) . "&author=" . urlencode($result['author']) . "&isbn=" . urlencode($result['isbn']) . "&publisher=" . urlencode($result['publisher']) . "&description=" . urlencode($result['description']);
+    $link = "../ManageBookspageEdit.php?id=" . $result['id'] . "&image=" . $result['image'] . "&title=" . $result['title'] . "&author=" . $result['author'] . "&isbn=" . $result['isbn'] . "&publisher=" . $result['publisher'] . "&description=" . $result['description'];
 
     header("Location: " . $link);
 }
