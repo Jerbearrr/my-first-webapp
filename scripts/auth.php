@@ -5,8 +5,8 @@ $password = '';
 $login_type = '';
 
 if (isset($_GET['type']) && isset($_POST['email']) && isset($_POST['password'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
     $login_type = $_GET['type'];
 }
 
