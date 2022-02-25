@@ -26,13 +26,13 @@ if (isset($_SESSION)) {
 }
 
 if (isset($_GET['id'])) {
-	$id = htmlspecialchars($_GET['id']);
-	$image = htmlspecialchars($_GET['image']);
-	$title = htmlspecialchars($_GET['title']);
-	$author = htmlspecialchars($_GET['author']);
-	$isbn = htmlspecialchars($_GET['isbn']);
-	$publisher = htmlspecialchars($_GET['publisher']);
-	$description = htmlspecialchars($_GET['description']);
+	$id = $_GET['id'];
+	$image = $_GET['image'];
+	$title = $_GET['title'];
+	$author = $_GET['author'];
+	$isbn = $_GET['isbn'];
+	$publisher = $_GET['publisher'];
+	$description = $_GET['description'];
 }
 ?>
 <!DOCTYPE html>
