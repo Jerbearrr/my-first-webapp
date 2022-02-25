@@ -414,11 +414,11 @@ $start_from = ($page-1) * $limit;
 $bookselect = "";
 
 
-$title = $_GET['title'];
-$author = $_GET['author'];
-$isbn = $_GET['isbn'];
-$publisher = $_GET['publisher'];
-$keyword = $_GET['keyword'];
+$title = htmlspecialchars($_GET['title']);
+$author = htmlspecialchars($_GET['author']);
+$isbn = htmlspecialchars($_GET['isbn']);
+$publisher = htmlspecialchars($_GET['publisher']);
+$keyword = htmlspecialchars($_GET['keyword']);
 
 $sortby = $_GET['sortby']??'';
 
