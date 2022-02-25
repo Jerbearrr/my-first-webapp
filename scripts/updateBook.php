@@ -2,13 +2,13 @@
 include("../database.php");
 
 if (isset($_POST)) {
-    $id = $_GET['id'];
-    $title = $_POST['title'];
-    $author = $_POST['author'];
-    $isbn = $_POST['isbn'];
-    $publisher = $_POST['publisher'];
-    $description = $_POST['description'];
-	$imageverifier = $_POST['imageverifier'];
+    $id = htmlspecialchars($_GET['id']);
+    $title = htmlspecialchars($_POST['title']);
+    $author = htmlspecialchars($_POST['author']);
+    $isbn = htmlspecialchars($_POST['isbn']);
+    $publisher = htmlspecialchars($_POST['publisher']);
+    $description = htmlspecialchars($_POST['description']);
+	$imageverifier = htmlspecialchars($_POST['imageverifier']);
 	$downloadablefile = downloadablefile();
 	$image = uploadFile();
 	
@@ -100,7 +100,7 @@ function downloadablefile() {
     }
     }
 	}else {
-		return htmlspecialchars(basename(NULL));
+		return htmlspecialchars(basename(''));
 		
 	}
 
@@ -150,7 +150,7 @@ if($_FILES['image']['name'] != "") {
         exit();
     }
 }else{
-		return htmlspecialchars(basename(NULL));
+		return htmlspecialchars(basename(''));
 		
 	}
 }
