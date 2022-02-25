@@ -1084,6 +1084,11 @@ hr {
 }
 
 @media screen and (max-width: 47.99em) {
+	.nav-link {
+  display: block;
+  padding: .5rem 0.5rem!important;
+    padding-top: 0.5rem;
+	}
 	.reqbtn{
 
 
