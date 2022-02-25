@@ -8,11 +8,11 @@ $decription = '';
 
 if (isset($_POST['submit'])) {
     //Form is submitted
-    $title = $_POST['title'];
-    $author = $_POST['author'];
-    $isbn = $_POST['isbn'];
-    $publisher = $_POST['publisher'];
-    $description = $_POST['description'];
+    $title = htmlspecialchars($_POST['title']);
+    $author = htmlspecialchars($_POST['author']);
+    $isbn = htmlspecialchars($_POST['isbn']);
+    $publisher = htmlspecialchars($_POST['publisher']);
+    $description = htmlspecialchars($_POST['description']);
     $image = uploadFile();
 	$downloadablefile = downloadablefile();
 }
@@ -80,7 +80,7 @@ if($_FILES['image']['name'] != "") {
         exit();
     }
 }else{
-		return htmlspecialchars(basename(NULL));
+		return htmlspecialchars(basename(""));
 		
 	}
 }
@@ -118,7 +118,7 @@ function downloadablefile() {
     }
     }
 	}else {
-		return htmlspecialchars(basename(NULL));
+		return htmlspecialchars(basename(""));
 		
 	}
         // move the uploaded (temporary) file to the specified destination
