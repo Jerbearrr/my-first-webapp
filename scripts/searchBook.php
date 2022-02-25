@@ -2,7 +2,7 @@
 
 include("../database.php");
 if (isset($_POST['search'])) {
-    $keyword = $_POST['search'];
+    $keyword = htmlspecialchars($_POST['search']);
 }
 
 
